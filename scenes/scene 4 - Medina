@@ -1,99 +1,75 @@
-#include <iostream>
-#include <chrono>
-#include <thread>
-#include <string>
-#include <limits>
-
-using namespace std;
-
-// -------------------- Helper Functions --------------------
-void wordByWord(const string &text, int speedMs = 50)
-{
-    string word;
-    for (size_t i = 0; i < text.size(); ++i)
-    {
-        cout << text[i];
-        if (text[i] == ' ' || i == text.size() - 1)
-            cout.flush();
-        this_thread::sleep_for(chrono::milliseconds(speedMs));
-    }
-    cout << endl;
-}
-
-void lineByLine(const string &line, int delayMs = 1000)
-{
-    cout << line << endl;
-    this_thread::sleep_for(chrono::milliseconds(delayMs));
-}
-
-int readChoice()
-{
+void scene_billboard() {
     int choice;
-    while (true)
-    {
-        if (cin >> choice)
-            return choice;
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Please enter a valid number: ";
+
+    cout << "\n=============Scene 4: Romance Route: Billboard Scene=============" << endl;
+    cout << "\n=*Mecha Man & Blonde Blazer flew up to the billboard & drinking*=" << endl;
+    cout << "=================================================================" << endl;
+
+    typewrite("\nRobert: I actually thought you were taking us to sit on it (・∀・)");
+    typewrite("\nBlonde Blazer: Hmm! Oh yeah, that woulda been cool （＾ω＾）");
+    typewrite("\nBut no, yeah, this, this is better cause you can see it(HOLLYWOOD).. and it looks like there's a couple up there already so.");
+
+    cout << "\n1. I really needed this." << endl;
+    cout << "2. Thanks for helping me." << endl;
+    cout << "3. Sorry about the spit thing." << endl;
+    cout << "Choice: ";
+    cin >> choice;
+
+    if (choice == 1) {
+        typewrite("\nRobert: All this has been pretty... overwhelming, you know (¬‿¬)");
+        typewrite("\nI don't get out often and I think I really needed this.");
+        typewrite("\nSo, thank you. For bringing me out. I had a really great time.");
     }
-}
-
-// -------------------- Scene 4 Function --------------------
-void bar_flambae()
-{
-    lineByLine("┌── Bar Scene ──┐");
-    wordByWord("Blonde Blazer: I gotta say blazer that does sound intriguing-");
-    wordByWord("Mecha Man: That's actually-");
-    lineByLine("(*ﾟ▽ﾟ*) ─ Spits drink on Blazer ─");
-    wordByWord("Blonde Blazer: Not water...");
-    wordByWord("Mecha Man: This is like pure alcohol?!");
-    wordByWord("Blonde Blazer: Well it is actually *Wipes face");
-    wordByWord("Mecha Man: You drink hard liquor from a pint glass?");
-    wordByWord("Blonde Blazer: I actually drink straight from the glass");
-    wordByWord("Blonde Blazer: I'm gonna go clean up");
-    wordByWord("Mecha Man: I'm so sorry");
-    wordByWord("Blonde Blazer: I will be right back");
-    lineByLine("(⊙_⊙) ─ Blazer stands up and goes to the restroom ─");
-    lineByLine("ヽ(｀⌒´)ノ ─ A guy screams from across the room ─");
-    wordByWord("Flambae: [Distant scream] Hey! Bitch!");
-    lineByLine("└─ Mecha Man looks ─");
-    wordByWord("Flambae: I'm talking to you, bitch!");
-    wordByWord("Mecha Man: I turned around because someone screamed, not cause I'm a bitch or anything");
-    wordByWord("Flambae: Last time I checked this is a bar for superheroes");
-    wordByWord("Mecha Man: No way! Is that your SuperPower? telling people obvious shit?");
-    lineByLine("(¬_¬) ─ Coupe snickers ─");
-    wordByWord("Mecha Man: Are you the villain I just messed up a couple of years ago?");
-    wordByWord("Flambae: I am not a villain, I am Flambae, a superhero.");
-    wordByWord("Flambae: Now Mecha Dick get the fuck out of here cause you're not a superhero anymore");
-    wordByWord("Flambae: We can do this the easy way or the hard w-");
-
-    lineByLine("THROW WATER [1]  THROW ALCOHOL [2]");
-    cout << "Choose (1-2): ";
-    int choice = readChoice();
-
-    if (choice == 1)
-    {
-        lineByLine("(>_<) ─ Throws water on Flambae ─");
-        lineByLine("(o_o) ─ Flames get put out ─");
-        wordByWord("Mecha Man: There, easy way");
-        lineByLine("(¬_¬) ─ Flambae visibly gets irritated ─");
-        wordByWord("Mecha Man: Are you gonna punch me now?");
-        lineByLine("(>_<) ─ Flambae rushes towards Mecha Man ─");
-        lineByLine("(>_<) ─ Slides on water and brakes teeth on the Bar counter ─");
+    else if (choice == 2) {
+        typewrite("\nRobert: I really appreciate you coming to my rescue back there (o^_^o)");
+        typewrite("\nI still think I could've handled it but-- all I'm trying to say is.");
+        typewrite("\nThanks. I should've just said that.. But, yep, I'm still talking.");
     }
-    else
-    {
-        lineByLine("(>_<) ─ Throws alcohol on Flambae ─");
-        lineByLine("(火o火) ─ Flambae's hair catches on fire ─");
-        wordByWord("Mecha Man: Sorry, Which way was that?");
-        lineByLine("(⊙_⊙) ─ Flambae runs outside while burning ─");
+    else if (choice == 3) {
+        typewrite("\nRobert: I know I shouldn't bring it up cause it was mortifying for the both of us (≧▽≦)");
+        typewrite("\nBut I am seriously sorry about the whole spitting thing.");
+        typewrite("\nBlonde: Yeah that's usually like a second date kinda thing with me (¬‿¬)");
+        typewrite("\nI'm joking. I'm joking. This is, this is not a date.");
+        typewrite("\nRobert: No, totally. I was thinking about something else. But yeah. Thanks. Thank you again..");
     }
-}
+    else {
+        cout << "Invalid Input" << endl;
+    }
 
-// -------------------- Main --------------------
-int main()
-{
-    bar_flambae();  // Run Scene 4
-    return 0;
+    typewrite("\nBlonde: Don't you worry about it Robert Roberson (´∀｀)");
+    typewrite("\nRobert: How do you know my name?");
+    typewrite("\nBlonde: Whoops! (・_・;)");
+    typewrite("\nRobert: What's going on?");
+    typewrite("\nBlonde: Okay I'll tell you, but only after you tell me how you ended up with a name like that (¬‿¬)");
+
+    cout << "\n*Blonde Blazer touched and glazed Robert's face* (｡♥‿♥｡)" << endl;
+
+    cout << "\n1. Kiss her" << endl;
+    cout << "2. Let the moment pass" << endl;
+    cout << "Choice: ";
+    cin >> choice;
+
+    if (choice == 1) {
+        typewrite("\n*You kissed her and she blushed (〃∇〃) and sparks ignite within*");
+        typewrite("\nBlonde: No. This.. I'm, I'm sorry if I gave the wrong impression (⁄ ⁄•⁄ω⁄•⁄ ⁄)");
+        isRomanticTensionActive = true;
+        Blazer_Impression_Score += 5;
+    }
+    else if (choice == 2) {
+        typewrite("\n*You hold back. She looks away, but the tension remains (•ิ_•ิ)*");
+        typewrite("\nBlonde: Sorry, I'm actually here with.. a purpose and.. (･_･;)");
+        isRomanticTensionActive = false;
+    }
+    else {
+        cout << "Invalid Input" << endl;
+    }
+
+    typewrite("\nRobert: Oh no (＠_＠;)");
+    typewrite("\nBlonde: It's my fault (｡•́︿•̀｡)");
+    typewrite("\nRobert: I'm so sorry. I totally misread that--");
+    typewrite("\nBlonde: You didn't-- I mean, you did, but I definitely...");
+    typewrite("\nThe way I went about things tonight... I'm sorry. It was all a little loose. A little unprofessional (⌒_⌒;)");
+    typewrite("\nRobert: Unprofessional? I'm not sure that that applies to this but--");
+
+    cout << "\n================================================================" << endl;
 }
