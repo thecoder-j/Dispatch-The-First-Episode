@@ -1,0 +1,91 @@
+#include <iostream>
+#include <thread>
+#include <chrono>
+#include <sstream>
+using namespace std;
+
+// Word-by-word printing for dialogue
+void printWords(const string &text, int wordDelayMs = 150) {
+    stringstream ss(text);
+    string word;
+    while (ss >> word) {
+        cout << word << " " << flush;
+        this_thread::sleep_for(chrono::milliseconds(wordDelayMs));
+    }
+    cout << endl;
+}
+
+// Line-by-line printing for actions
+void printLines(const string &text, int lineDelayMs = 600) {
+    stringstream ss(text);
+    string line;
+    while (getline(ss, line, '\n')) {
+        cout << line << endl;
+        this_thread::sleep_for(chrono::milliseconds(lineDelayMs));
+    }
+}
+
+// Choice reader
+int readChoice() {
+    int choice;
+    while (true) {
+        if (cin >> choice) return choice;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Please enter a valid number: ";
+    }
+}
+
+void street_fight() {
+    // Dialogue
+    printWords("Mecha man: Hey, Assholes! (╯°□°）╯");
+    printWords("Red Ski: Hey! Who you calling asshole, asshole!? (¬_¬)");
+    printWords("Orange Ski: I'll handle this idiot, keep loading! (*>﹏<*)");
+    printWords("Orange Ski: And who the fuck are you? (°ロ°)!");
+    printWords("Mecha man: Well right now, I'm someone who's got nothing to lose, that's probably bad news for you (ಠ_ಠ)");
+    printWords("Orange Ski: Well, what nothing you have, you're about to fucking lose again (¬‿¬)");
+    printWords("Mecha man: Whatever the case, I'm enough to deal with a pack of skittles idiots like you (*≧ω≦)");
+
+    // Choice
+    printWords("PUNCH WITH RIGHT [1] PUNCH WITH LEFT [2]");
+    cout << "Choose (1-2): ";
+    int choice = readChoice();
+
+    // Fight outcome (line-by-line actions)
+    if (choice == 1) {
+        printLines(
+            "(*>﹏<*) Orange Ski dodges!\n"
+            "(╯°□°）╯ Mecha Man gets struck by the crowbar and falls down!\n"
+            "(-_-) Gets beat up by the group!\n"
+            "(≧▽≦) Random person flies in and drags enemies away!\n"
+            "Blonde Blazer: The guys I threw, he landed on the roof, right? (*^_^*)\n"
+            "Green Ski from a distance: All good! (•̀ᴗ•́)و ̑̑\n"
+            "Blonde Blazer: Hi, I'm Blonde Blazer (＾▽＾)\n"
+            "Mecha Man: Oh, I know you! You're famous (o_O)\n"
+            "Blonde Blazer: I'm not famous, I'm just a hero for hire (¬‿¬)\n"
+            "Bus with Blonde Blazer poster passes by (*≧ω≦)\n"
+            "Mecha Man: Yeah, I doubt that (¬_¬)\n"
+            "Blonde Blazer: You look like you could use a drink (*^‿^*)"
+        );
+    } else {
+        printLines(
+            "(≧▽≦) Knocked Orange Ski to the ground!\n"
+            "(╯°□°）╯ Mecha Man gets punched by Red Ski and falls down!\n"
+            "(-_-) Gets beat up by the group!\n"
+            "(•̀ᴗ•́)و Random person flies in and drags enemies away!\n"
+            "Blonde Blazer: The guys I threw, he landed on the roof, right? (*^_^*)\n"
+            "Green Ski from a distance: All good! (•̀ᴗ•́)و ̑̑\n"
+            "Blonde Blazer: Hi, I'm Blonde Blazer (＾▽＾)\n"
+            "Mecha Man: Oh, I know you! You're famous (o_O)\n"
+            "Blonde Blazer: I'm not famous, I'm just a hero for hire (¬‿¬)\n"
+            "Bus with Blonde Blazer poster passes by (*≧ω≦)\n"
+            "Mecha Man: Yeah, I doubt that (¬_¬)\n"
+            "Blonde Blazer: You look like you could use a drink (*^‿^*)"
+        );
+    }
+}
+
+int main() {
+    street_fight();
+    return 0;
+}
