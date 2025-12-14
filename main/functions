@@ -1,0 +1,6 @@
+void scene_interrogation();
+void scene_street_fight();
+void scene_bar_flambae();
+void scene_billboard();
+void scene_combat_toxic();
+void epilogue_summary();
