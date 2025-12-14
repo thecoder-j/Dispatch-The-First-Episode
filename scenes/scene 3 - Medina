@@ -1,91 +1,83 @@
-#include <iostream>
-#include <thread>
-#include <chrono>
-#include <sstream>
-using namespace std;
-
-// Word-by-word printing for dialogue
-void printWords(const string &text, int wordDelayMs = 150) {
-    stringstream ss(text);
-    string word;
-    while (ss >> word) {
-        cout << word << " " << flush;
-        this_thread::sleep_for(chrono::milliseconds(wordDelayMs));
-    }
-    cout << endl;
-}
-
-// Line-by-line printing for actions
-void printLines(const string &text, int lineDelayMs = 600) {
-    stringstream ss(text);
-    string line;
-    while (getline(ss, line, '\n')) {
-        cout << line << endl;
-        this_thread::sleep_for(chrono::milliseconds(lineDelayMs));
-    }
-}
-
-// Choice reader
-int readChoice() {
+void scene_bar_flambae() {
     int choice;
-    while (true) {
-        if (cin >> choice) return choice;
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Please enter a valid number: ";
-    }
-}
 
-void street_fight() {
-    // Dialogue
-    printWords("Mecha man: Hey, Assholes! (╯°□°）╯");
-    printWords("Red Ski: Hey! Who you calling asshole, asshole!? (¬_¬)");
-    printWords("Orange Ski: I'll handle this idiot, keep loading! (*>﹏<*)");
-    printWords("Orange Ski: And who the fuck are you? (°ロ°)!");
-    printWords("Mecha man: Well right now, I'm someone who's got nothing to lose, that's probably bad news for you (ಠ_ಠ)");
-    printWords("Orange Ski: Well, what nothing you have, you're about to fucking lose again (¬‿¬)");
-    printWords("Mecha man: Whatever the case, I'm enough to deal with a pack of skittles idiots like you (*≧ω≦)");
+    cout << "\n====================Scene 3: The Superhero Bar Scene====================" << endl;
+    cout << "*Blonde Blazer steps away for a moment to clean up* (￣▽￣;)" << endl;
+    cout << "========================================================================" << endl;
 
-    // Choice
-    printWords("PUNCH WITH RIGHT [1] PUNCH WITH LEFT [2]");
-    cout << "Choose (1-2): ";
-    int choice = readChoice();
+    typewrite("\nMecha Man: What're you doing? (¬_¬)");
+    typewrite("\nDrunk Patron: Hey! Bitch! ...Hey! I'm talkin' to you bitch!");
+    typewrite("\nMecha Man: Alright, just so you know, I only turned around cause someone yelled (ಠ_ಠ)");
+    typewrite("\nNot because I'm a bitch or anything.");
+    typewrite("\nFlambae: Don't you watch the news? This is a superhero bar.");
+    typewrite("\nMecha Man: Oh wow. Are you a superhero? That's so cool (・∀・)");
+    typewrite("\nIs this your power? You just tell people obvious shit?");
 
-    // Fight outcome (line-by-line actions)
+    typewrite("\nFlambae: You're really gonna act like you don't remember me?");
+    typewrite("\nMecha Man: Wait... it's coming back to me... yeah...");
+
+    cout << "\n1. Dr. Don't Do Shit" << endl;
+    cout << "2. Mr. Wet Ponytail" << endl;
+    cout << "3. Sunglasses at Night Guy" << endl;
+    cout << "Choice: ";
+    cin >> choice;
+
+    typewrite("\nOh wait, I know it (｀▽´)");
+
     if (choice == 1) {
-        printLines(
-            "(*>﹏<*) Orange Ski dodges!\n"
-            "(╯°□°）╯ Mecha Man gets struck by the crowbar and falls down!\n"
-            "(-_-) Gets beat up by the group!\n"
-            "(≧▽≦) Random person flies in and drags enemies away!\n"
-            "Blonde Blazer: The guys I threw, he landed on the roof, right? (*^_^*)\n"
-            "Green Ski from a distance: All good! (•̀ᴗ•́)و ̑̑\n"
-            "Blonde Blazer: Hi, I'm Blonde Blazer (＾▽＾)\n"
-            "Mecha Man: Oh, I know you! You're famous (o_O)\n"
-            "Blonde Blazer: I'm not famous, I'm just a hero for hire (¬‿¬)\n"
-            "Bus with Blonde Blazer poster passes by (*≧ω≦)\n"
-            "Mecha Man: Yeah, I doubt that (¬_¬)\n"
-            "Blonde Blazer: You look like you could use a drink (*^‿^*)"
-        );
-    } else {
-        printLines(
-            "(≧▽≦) Knocked Orange Ski to the ground!\n"
-            "(╯°□°）╯ Mecha Man gets punched by Red Ski and falls down!\n"
-            "(-_-) Gets beat up by the group!\n"
-            "(•̀ᴗ•́)و Random person flies in and drags enemies away!\n"
-            "Blonde Blazer: The guys I threw, he landed on the roof, right? (*^_^*)\n"
-            "Green Ski from a distance: All good! (•̀ᴗ•́)و ̑̑\n"
-            "Blonde Blazer: Hi, I'm Blonde Blazer (＾▽＾)\n"
-            "Mecha Man: Oh, I know you! You're famous (o_O)\n"
-            "Blonde Blazer: I'm not famous, I'm just a hero for hire (¬‿¬)\n"
-            "Bus with Blonde Blazer poster passes by (*≧ω≦)\n"
-            "Mecha Man: Yeah, I doubt that (¬_¬)\n"
-            "Blonde Blazer: You look like you could use a drink (*^‿^*)"
-        );
+        typewrite("\nYou are Dr. Don't Do Shit.");
+        typewrite("\nYou walk up to people, talk a big game, then do absolutely nothing (￣ω￣)");
+        typewrite("\nAlso you're not a real doctor. Cause you're a fuckin' idiot.");
     }
-}
+    else if (choice == 2) {
+        typewrite("\nYou're Mr. Wet Ponytail.");
+        typewrite("\nYour superpower is that your ponytail is always wet (ಠ‿ಠ)");
+        typewrite("\nIn battle, you whip it around and anyone it touches just gives up.");
+    }
+    else if (choice == 3) {
+        typewrite("\nYou're Sunglasses Indoors at Night Guy.");
+        typewrite("\nYour superpower is letting everyone know you're a douchebag (¬‿¬)");
+        typewrite("\nYou should literally never do that.");
+    }
+    else {
+        cout << "Invalid Input" << endl;
+    }
 
-int main() {
-    street_fight();
-    return 0;
+    typewrite("\nFlambae: You good? (•_•)");
+    typewrite("\nDrunk Patron: Sorry, I choked on my spit.");
+    typewrite("\nI control fire—");
+    typewrite("\nMecha Man: The fire?");
+    typewrite("\nFlambae: And the flame. My skin doesn't burn.");
+    typewrite("\nI am Flambae.");
+    typewrite("\nMecha Man: Oh shit... I do remember you now (ಠ_ಠ)");
+    typewrite("\nYou're that shitty villain I busted up.");
+    typewrite("\nFlambae: Not anymore. I'm a real superhero now.");
+    typewrite("\nAnd you're not Mecha Man anymore.");
+    typewrite("\nSo you need to get the fuck out of here.");
+    typewrite("\nNow... we can do this the easy way.");
+
+    cout << "\n1. Throw Water" << endl;
+    cout << "2. Throw Alcohol" << endl;
+    cout << "Choice: ";
+    cin >> choice;
+
+    if (choice == 1) {
+        cout << "\n*Mecha Man throws water on Flambae* (｀･ω･´)ﾉ" << endl;
+        cout << "*Flames die down. Flambae screams in pain* (×_×)" << endl;
+        typewrite("\nMecha Man: There. Easy way.");
+        typewrite("\nFlambae: I've been waiting a long time for this.");
+        cout << "*Flambae slips mid-charge and knocks himself out* (⊙_⊙;)" << endl;
+        Blazer_Impression_Score += 1;
+    }
+    else if (choice == 2) {
+        cout << "\n*Mecha Man throws alcohol at Flambae* (╯°□°）╯" << endl;
+        cout << "*Fire erupts violently. Hair ignites* (🔥ಠ‿ಠ🔥)" << endl;
+        cout << "*Chaos breaks out. Everyone is watching* (⊙△⊙)" << endl;
+        Blazer_Impression_Score += 5;
+    }
+    else {
+        cout << "Invalid Input" << endl;
+    }
+
+    cout << "\n=======================================================================" << endl;
 }
