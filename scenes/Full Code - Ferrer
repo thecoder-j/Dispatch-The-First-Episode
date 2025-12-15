@@ -66,6 +66,7 @@ void scene_introduction() {
         cout << "Robert: He's gone.\n";
         cout << "Goon: And you're still standing here because of it.\n";
     }
+    cout << "\n===== End of Scene 1 =====\n";
 }
 
 // =================================================
@@ -115,6 +116,7 @@ void scene_apartment_interrogation() {
         isMerciful = false;
         cout << "\n*Silence follows as the screaming fades*\n";
     }
+    cout << "\n===== End of Scene 2 =====\n";
 }
 
 // =================================================
@@ -149,7 +151,7 @@ void scene_street_fight() {
         cout << "The thug stays aggressive.\n";
     }
 
-    cout << "\n=================================================\n";
+    cout << "\n===== End of Scene 3 =====\n";
 }
 
 // =================================================
@@ -158,47 +160,91 @@ void scene_street_fight() {
 void scene_bar_flambae() {
     int choice;
 
-    cout << "\n========== SCENE 4: BAR FLAMBAE ==========\n\n";
+    cout << "\n===== Scene 4: Bar Flambae =====\n\n";
 
-    cout << "The bar is packed with off-duty heroes and half-broken furniture.\n";
-    cout << "Music thumps but the air suddenly heats up.\n";
-    cout << "Flambae stands near the counter flames licking his hands.\n\n";
+    cout << "*A glass shatters nearby*  (╯°□°）╯︵ ┻━┻\n";
+    cout << "Mecha Man: What're you doing?\n";
+    cout << "Person: Hey! Bitch!..... Hey! I'm talkin' to you bitch!\n";
+    cout << "Mecha Man: Alright, just so you know, I only turned around cause someone yelled,\n";
+    cout << "not because I'm a bitch or anything.\n";
 
-    cout << "This is already unstable.\n";
-    cout << "(🔥ಠ_ಠ) *fwoosh*\n";
-    cout << "People shout and scatter as the fire grows.\n\n";
+    cout << "Flambae: Don't you watch the news? This is a superhero bar.\n";
+    cout << "Mecha Man: Oh, wow, are you a superhero? That's so cool.\n";
+    cout << "Is this your power?\n";
+    cout << "You're like, tell people obvious shit guy?\n";
 
-    cout << "Choose your action:\n";
-    cout << "1. Throw Water\n";
-    cout << "2. Throw Alcohol\n";
+    cout << "Flambae: You're really gonna act like you don't remember me?\n";
+    cout << "Mecha Man: Wait, it's coming back to me...\n";
+    cout << "Yeah, it's coming back to me...\n\n";
+
+    cout << "1. Dr. Don't Do Shit\n";
+    cout << "2. Mr. Wet Ponytail\n";
+    cout << "3. Sunglasses at Night Guy\n";
+    cout << "Choice: ";
+    cin >> choice;
+
+    cout << "Oh wait, I know it.\n";
+
+    if (choice == 1) {
+        cout << "You are Dr. Don't Do Shit.\n";
+        cout << "Your deal is you walk up to people, look threatening,\n";
+        cout << "talk a big game, then don't do shit about it.\n";
+        cout << "Also, you're not a real doctor cause you're a fuckin' idiot.\n";
+    }
+    else if (choice == 2) {
+        cout << "You are Mr. Wet Ponytail.\n";
+        cout << "Your superpower is in your ponytail, which aside from being disgusting,\n";
+        cout << "has the ability to never not be wet.\n";
+        cout << "In battle, you whip it around and anyone it touches fuckin' kills themself.\n";
+    }
+    else if (choice == 3) {
+        cout << "You are Sunglasses Indoors at Night Guy.\n";
+        cout << "Your superpower is letting everyone know in the room\n";
+        cout << "that you're a douchebag.\n";
+        cout << "Cause you should literally never do that.\n";
+    }
+    else {
+        cout << "Mecha Man: ...Yeah, I lost it.\n";
+    }
+
+    cout << "Flambae: You good?\n";
+    cout << "Person: Sorry, I choked on my spit.\n";
+    cout << "No, Mecha Bitch. I control the fire--\n";
+
+    cout << "Mecha Man: The fire?\n";
+    cout << "Flambae: And the flame.\n";
+    cout << "And my skin does not burn.\n";
+    cout << "I am Flambae.\n";
+
+    cout << "Mecha Man: Wait, oh shit. I do remember you.\n";
+    cout << "You're that shitty villain I busted up.\n";
+
+    cout << "Flambae: Not anymore, Mecha Dick.\n";
+    cout << "As I literally just said, I am Flambae, a real superhero.\n";
+    cout << "And you are not Mecha Man anymore.\n";
+    cout << "So you need to get the fuck out of here.\n\n";
+
+    cout << "1. Water\n";
+    cout << "2. Alcohol\n";
     cout << "Choice: ";
     cin >> choice;
 
     if (choice == 1) {
-        cout << "You grab the nearest bucket of water.\n";
-        cout << "(╯°□°）╯︵ 💧\n";
-        cout << "The flames hiss violently and die down.\n";
-        cout << "Flambae screams as the heat collapses inward.\n";
-        cout << "(×_×) *steam rises*\n";
-        cout << "The bar smells like smoke and regret.\n";
-        cout << "Witnesses look shaken but relieved.\n";
-        Blazer_Impression_Score += 1;
-    } else if (choice == 2) {
-        cout << "You reach for a bottle behind the bar.\n";
-        cout << "(ง🔥_🔥)ง *glass shatters*\n";
-        cout << "Alcohol splashes across the flames.\n";
-        cout << "(🔥🔥🔥) *WHOOM*\n";
-        cout << "Fire erupts toward the ceiling.\n";
-        cout << "People scream and dive for cover.\n";
-        cout << "That was loud.\n";
-        cout << "The moment burns itself into everyone's memory.\n";
-        Blazer_Impression_Score += 3;
-    } else {
-        cout << "You freeze.\n";
-        cout << "Security rushes in as the situation spirals.\n";
+        cout << "*You throw water on Flambae*  (っ・ω・)っ💧\n";
+        cout << "Mecha Man: There. The easy way.\n";
+        cout << "Flambae: I've been waiting a long time for this.\n";
+        cout << "*Flambae charges, slips, and knocks himself out*  (x_x)\n";
+    }
+    else if (choice == 2) {
+        cout << "*You throw alcohol on Flambae*  (っ🔥)っ🥃\n";
+        cout << "*The flames explode upward*  (🔥🔥🔥)\n";
+        cout << "Flambae: OH YOU FUCKED UP.\n";
+    }
+    else {
+        cout << "Mecha Man: Yeah... bad call.\n";
     }
 
-    cout << "\n[Blazer Impression Score: " << Blazer_Impression_Score << "]\n";
+    cout << "\n===== End of Scene 4 =====\n";
 }
 
 // =================================================
@@ -207,72 +253,111 @@ void scene_bar_flambae() {
 void scene_billboard() {
     int choice;
 
-    cout << "\n========== SCENE 5: BILLBOARD ROMANCE ==========\n\n";
+    
+    cout << "\n===== Scene 5: Billboard =====\n\n";
 
-    cout << "Mecha Man & Blonde Blazer flew up to the billboard & drinking.\n\n";
+    cout << "*Mecha Man and Blonde Blazer land on the billboard*  (ง•̀_•́)ง\n";
+    cout << "*City lights glow beneath them*  ✨🏙️\n";
 
-    cout << "Robert: I actually thought you were taking us to sit on it (・∀・)\n";
-    cout << "Blonde Blazer: Hmm! Oh yeah, that woulda been cool （＾ω＾）\n";
-    cout << "Blonde Blazer: But this is better cause you can see it(HOLLYWOOD).. and it looks like there's a couple up there already so.\n\n";
+    cout << "Robert: I actually thought you were taking us to sit on it.\n";
+    cout << "Blonde Blazer: Hmm! Oh yeah, that woulda been cool.\n";
+    cout << "But no, this is better cause you can see it.\n";
+    cout << "And it looks like there's a couple up there already.\n\n";
 
-    cout << "CHOICES:\n";
-    cout << "1. I really needed this.\n";
-    cout << "2. Thanks for helping me.\n";
-    cout << "3. Sorry about the spit thing.\n";
+    cout << "1. I really needed this\n";
+    cout << "2. Thanks for helping me\n";
+    cout << "3. Sorry about the spit thing\n";
     cout << "Choice: ";
     cin >> choice;
 
     if (choice == 1) {
-        cout << "Robert: All this has been pretty... overwhelming, you know (¬‿¬)\n";
-        cout << "I don't get out often and I think I really needed this.\n";
-        cout << "So, thank you. For bringing me out. I had a really great time.\n";
-    } else if (choice == 2) {
-        cout << "Robert: I really appreciate you coming to my rescue back there (o^_^o)\n";
-        cout << "I still think I could've handled it but-- all I'm trying to say is.\n";
-        cout << "Thanks. I should've just said that.. But, yep, I'm still talking.\n";
-    } else if (choice == 3) {
-        cout << "Robert: I know I shouldn't bring it up cause it was mortifying for the both of us (≧▽≦)\n";
+        cout << "Robert: All this has been pretty overwhelming, you know.\n";
+        cout << "I don't get out often, and I think I really needed this.\n";
+        cout << "So thank you. For bringing me out.\n";
+        cout << "I had a really great time.\n";
+    }
+    else if (choice == 2) {
+        cout << "Robert: I really appreciate you coming to my rescue back there.\n";
+        cout << "I still think I could've handled it, but...\n";
+        cout << "Thanks. I should've just said that.\n";
+        cout << "But yep. I'm still talking.\n";
+    }
+    else if (choice == 3) {
+        cout << "Robert: I know I shouldn't bring it up.\n";
         cout << "But I am seriously sorry about the whole spitting thing.\n";
-        cout << "Blonde: Yeah that's usually like a second date kinda thing with me (¬‿¬)\n";
-        cout << "I'm joking. I'm joking. This is, this is not a date.\n";
-        cout << "Robert: No, totally. I was thinking about something else. But yeah. Thanks. Thank you again..\n";
+        cout << "Blonde Blazer: Yeah, that's usually like a second date kinda thing with me.\n";
+        cout << "I'm joking. I'm joking.\n";
+        cout << "This is not a date.\n";
+        cout << "Robert: No. Totally. Yeah.\n";
+    }
+    else {
+        cout << "Robert: Yeah... ignore that.\n";
     }
 
-    cout << "Blonde: Don't you worry about it Robert Roberson (´∀｀)\n";
+    cout << "Blonde Blazer: Don't you worry about it, Robert Roberson.\n";
     cout << "Robert: How do you know my name?\n";
-    cout << "Blonde: Whoops! (・_・;)\n";
+    cout << "Blonde Blazer: Whoops!\n";
     cout << "Robert: What's going on?\n";
-    cout << "Blonde: Okay I'll tell you, but only after you tell me how you ended up with a name like that (¬‿¬)\n\n";
+    cout << "Blonde Blazer: Okay, I'll tell you.\n";
+    cout << "But only after you tell me how you ended up with a name like that.\n";
 
-    cout << "*Blonde Blazer touched and glazed Robert's face* (｡♥‿♥｡)\n";
+    cout << "Robert: Oh, you mean a name like Robert Roberson the Third?\n";
+    cout << "Blonde Blazer: The Third?! Three times this happened?\n";
 
-    cout << "CHOICES:\n";
+    cout << "Robert: There was grandpa Bobby.\n";
+    cout << "Then my dad, who everyone called Robbie.\n";
+    cout << "Then me.\n";
+    cout << "Cause I wanted to be taken seriously.\n";
+
+    cout << "Blonde Blazer: A family tradition.\n";
+    cout << "Robert: In more ways than one.\n";
+
+    cout << "Robert: Gramps was the first Mecha Man.\n";
+    cout << "He died in the suit before I was born.\n";
+    cout << "Dad was killed fighting Shroud.\n";
+    cout << "That's when I took over.\n";
+
+    cout << "Blonde Blazer: I'm so sorry. I didn't realize.\n";
+    cout << "Robert: Just your run of the mill sad superhero origin story.\n";
+    cout << "The family tradition is dying in that suit.\n";
+    cout << "Which I guess I don't have to worry about anymore.\n";
+
+    cout << "Blonde Blazer: I'm not quite drunk enough to share my origin story just yet.\n";
+    cout << "But remind me someday.\n";
+    cout << "Robert: Definitely.\n";
+
+    cout << "*Blonde Blazer gently touches Robert’s face*  (〃ω〃)\n";
+
     cout << "1. Kiss her\n";
     cout << "2. Let the moment pass\n";
     cout << "Choice: ";
     cin >> choice;
 
     if (choice == 1) {
-        cout << "*You kissed her and she blushed (〃∇〃) and sparks ignite within*\n";
-        cout << "Blonde: No. This.. I'm, I'm sorry if I gave the wrong impression (⁄ ⁄•⁄ω⁄•⁄ ⁄)\n";
-        isRomanticTensionActive = true;
-        Blazer_Impression_Score += 5;
-    } else if (choice == 2) {
-        cout << "*You hold back. She looks away, but the tension remains (•ิ_•ิ)*\n";
-        cout << "Blonde: Sorry, I'm actually here with.. a purpose and.. (･_･;)\n";
-        isRomanticTensionActive = false;
-    } else {
-        cout << "Invalid Input\n";
+        cout << "*You lean in and kiss her*  ( ˘ ³˘)♥\n";
+        cout << "Blonde Blazer: No.\n";
+        cout << "This... I'm sorry if I gave the wrong impression.\n";
+    }
+    else if (choice == 2) {
+        cout << "*You hesitate and pull back*  (•_•)\n";
+        cout << "Blonde Blazer: Sorry.\n";
+        cout << "I'm actually here with a purpose.\n";
+    }
+    else {
+        cout << "Robert: Uh... yeah.\n";
     }
 
-    cout << "Robert: Oh no (＠_＠;)\n";
-    cout << "Blonde: It's my fault (｡•́︿•̀｡)\n";
-    cout << "Robert: I'm so sorry. I totally misread that--\n";
-    cout << "Blonde: You didn't-- I mean, you did, but I definitely...\n";
-    cout << "The way I went about things tonight... I'm sorry. It was all a little loose. A little unprofessional (⌒_⌒;)\n";
-    cout << "Robert: Unprofessional? I'm not sure that that applies to this but--\n";
+    cout << "Robert: Oh no.\n";
+    cout << "Blonde Blazer: It's my fault.\n";
+    cout << "Robert: I'm so sorry, I totally misread that--\n";
+    cout << "Blonde Blazer: You didn't.\n";
+    cout << "I mean, you did, but...\n";
+    cout << "The way I went about tonight was a little unprofessional.\n";
 
-    cout << "\n[Blazer Impression Score: " << Blazer_Impression_Score << "]\n";
+    cout << "Robert: Unprofessional?\n";
+    cout << "I'm not sure that applies but... okay.\n";
+
+    cout << "\n===== End of Scene 5 =====\n";
 }
 
 // =================================================
@@ -371,4 +456,7 @@ void scene_combat_toxic() {
         cout << "Toxic: Talking won't save you.\n";
         cout << "*Combat continues*\n";
     }
+    cout << "\n===== End of Scene 6 =====\n";
 }
+
+
