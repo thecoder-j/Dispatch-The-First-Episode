@@ -1,75 +1,144 @@
+#include <iostream>
+#include <unistd.h>
+using namespace std;
+
+/* ---------- Typing Effects ---------- */
+
+// WORD-by-word (dialogue)
+void typeWords(string text, int delay = 80000) {
+    string word = "";
+    for (char c : text) {
+        if (c == ' ') {
+            cout << word << " ";
+            cout.flush();
+            usleep(delay);
+            word = "";
+        } else {
+            word += c;
+        }
+    }
+    cout << word << endl;
+    usleep(delay);
+}
+
+// LINE-by-line (actions)
+void typeLine(string text, int delay = 200000) {
+    cout << text << endl;
+    usleep(delay);
+}
+
+/* ---------- Scene 4 ---------- */
 void scene_billboard() {
     int choice;
 
-    cout << "\n=============Scene 4: Romance Route: Billboard Scene=============" << endl;
-    cout << "\n=*Mecha Man & Blonde Blazer flew up to the billboard & drinking*=" << endl;
-    cout << "=================================================================" << endl;
+    cout << "\n===== Scene 4: Billboard =====\n\n";
 
-    typewrite("\nRobert: I actually thought you were taking us to sit on it (・∀・)");
-    typewrite("\nBlonde Blazer: Hmm! Oh yeah, that woulda been cool （＾ω＾）");
-    typewrite("\nBut no, yeah, this, this is better cause you can see it(HOLLYWOOD).. and it looks like there's a couple up there already so.");
+    typeLine("*Mecha Man and Blonde Blazer land on the billboard*  (ง•̀_•́)ง");
+    typeLine("*City lights glow beneath them*  ✨🏙️");
 
-    cout << "\n1. I really needed this." << endl;
-    cout << "2. Thanks for helping me." << endl;
-    cout << "3. Sorry about the spit thing." << endl;
-    cout << "Choice: ";
+    typeWords("Robert: I actually thought you were taking us to sit on it.");
+    typeWords("Blonde Blazer: Hmm! Oh yeah, that woulda been cool.");
+    typeWords("But no, this is better cause you can see it.");
+    typeWords("And it looks like there's a couple up there already.");
+
+    cout << "\n1. I really needed this.";
+    cout << "\n2. Thanks for helping me.";
+    cout << "\n3. Sorry about the spit thing.";
+    cout << "\nChoice: ";
     cin >> choice;
 
     if (choice == 1) {
-        typewrite("\nRobert: All this has been pretty... overwhelming, you know (¬‿¬)");
-        typewrite("\nI don't get out often and I think I really needed this.");
-        typewrite("\nSo, thank you. For bringing me out. I had a really great time.");
+        typeWords("Robert: All this has been pretty overwhelming, you know.");
+        typeWords("I don't get out often, and I think I really needed this.");
+        typeWords("So thank you. For bringing me out.");
+        typeWords("I had a really great time.");
     }
     else if (choice == 2) {
-        typewrite("\nRobert: I really appreciate you coming to my rescue back there (o^_^o)");
-        typewrite("\nI still think I could've handled it but-- all I'm trying to say is.");
-        typewrite("\nThanks. I should've just said that.. But, yep, I'm still talking.");
+        typeWords("Robert: I really appreciate you coming to my rescue back there.");
+        typeWords("I still think I could've handled it, but...");
+        typeWords("Thanks. I should've just said that.");
+        typeWords("But yep. I'm still talking.");
     }
     else if (choice == 3) {
-        typewrite("\nRobert: I know I shouldn't bring it up cause it was mortifying for the both of us (≧▽≦)");
-        typewrite("\nBut I am seriously sorry about the whole spitting thing.");
-        typewrite("\nBlonde: Yeah that's usually like a second date kinda thing with me (¬‿¬)");
-        typewrite("\nI'm joking. I'm joking. This is, this is not a date.");
-        typewrite("\nRobert: No, totally. I was thinking about something else. But yeah. Thanks. Thank you again..");
+        typeWords("Robert: I know I shouldn't bring it up.");
+        typeWords("But I am seriously sorry about the whole spitting thing.");
+        typeWords("Blonde Blazer: Yeah, that's usually like a second date kinda thing with me.");
+        typeWords("I'm joking. I'm joking.");
+        typeWords("This is not a date.");
+        typeWords("Robert: No. Totally. Yeah.");
     }
     else {
-        cout << "Invalid Input" << endl;
+        typeWords("Robert: Yeah... ignore that.");
     }
 
-    typewrite("\nBlonde: Don't you worry about it Robert Roberson (´∀｀)");
-    typewrite("\nRobert: How do you know my name?");
-    typewrite("\nBlonde: Whoops! (・_・;)");
-    typewrite("\nRobert: What's going on?");
-    typewrite("\nBlonde: Okay I'll tell you, but only after you tell me how you ended up with a name like that (¬‿¬)");
+    typeWords("Blonde Blazer: Don't you worry about it, Robert Roberson.");
+    typeWords("Robert: How do you know my name?");
+    typeWords("Blonde Blazer: Whoops!");
+    typeWords("Robert: What's going on?");
+    typeWords("Blonde Blazer: Okay, I'll tell you.");
+    typeWords("But only after you tell me how you ended up with a name like that.");
 
-    cout << "\n*Blonde Blazer touched and glazed Robert's face* (｡♥‿♥｡)" << endl;
+    typeWords("Robert: Oh, you mean a name like Robert Roberson the Third?");
+    typeWords("Blonde Blazer: The Third?! Three times this happened?");
 
-    cout << "\n1. Kiss her" << endl;
-    cout << "2. Let the moment pass" << endl;
-    cout << "Choice: ";
+    typeWords("Robert: There was grandpa Bobby.");
+    typeWords("Then my dad, who everyone called Robbie.");
+    typeWords("Then me.");
+    typeWords("Cause I wanted to be taken seriously.");
+
+    typeWords("Blonde Blazer: A family tradition.");
+    typeWords("Robert: In more ways than one.");
+
+    typeWords("Robert: Gramps was the first Mecha Man.");
+    typeWords("He died in the suit before I was born.");
+    typeWords("Dad was killed fighting Shroud.");
+    typeWords("That's when I took over.");
+
+    typeWords("Blonde Blazer: I'm so sorry. I didn't realize.");
+    typeWords("Robert: Just your run of the mill sad superhero origin story.");
+    typeWords("The family tradition is dying in that suit.");
+    typeWords("Which I guess I don't have to worry about anymore.");
+
+    typeWords("Blonde Blazer: I'm not quite drunk enough to share my origin story just yet.");
+    typeWords("But remind me someday.");
+    typeWords("Robert: Definitely.");
+
+    typeLine("*Blonde Blazer gently touches Robert’s face*  (〃ω〃)");
+
+    cout << "\n1. Kiss her";
+    cout << "\n2. Let the moment pass";
+    cout << "\nChoice: ";
     cin >> choice;
 
     if (choice == 1) {
-        typewrite("\n*You kissed her and she blushed (〃∇〃) and sparks ignite within*");
-        typewrite("\nBlonde: No. This.. I'm, I'm sorry if I gave the wrong impression (⁄ ⁄•⁄ω⁄•⁄ ⁄)");
-        isRomanticTensionActive = true;
-        Blazer_Impression_Score += 5;
+        typeLine("*You lean in and kiss her*  ( ˘ ³˘)♥");
+        typeWords("Blonde Blazer: No.");
+        typeWords("This... I'm sorry if I gave the wrong impression.");
     }
     else if (choice == 2) {
-        typewrite("\n*You hold back. She looks away, but the tension remains (•ิ_•ิ)*");
-        typewrite("\nBlonde: Sorry, I'm actually here with.. a purpose and.. (･_･;)");
-        isRomanticTensionActive = false;
+        typeLine("*You hesitate and pull back*  (•_•)");
+        typeWords("Blonde Blazer: Sorry.");
+        typeWords("I'm actually here with a purpose.");
     }
     else {
-        cout << "Invalid Input" << endl;
+        typeWords("Robert: Uh... yeah.");
     }
 
-    typewrite("\nRobert: Oh no (＠_＠;)");
-    typewrite("\nBlonde: It's my fault (｡•́︿•̀｡)");
-    typewrite("\nRobert: I'm so sorry. I totally misread that--");
-    typewrite("\nBlonde: You didn't-- I mean, you did, but I definitely...");
-    typewrite("\nThe way I went about things tonight... I'm sorry. It was all a little loose. A little unprofessional (⌒_⌒;)");
-    typewrite("\nRobert: Unprofessional? I'm not sure that that applies to this but--");
+    typeWords("Robert: Oh no.");
+    typeWords("Blonde Blazer: It's my fault.");
+    typeWords("Robert: I'm so sorry, I totally misread that--");
+    typeWords("Blonde Blazer: You didn't.");
+    typeWords("I mean, you did, but...");
+    typeWords("The way I went about tonight was a little unprofessional.");
 
-    cout << "\n================================================================" << endl;
+    typeWords("Robert: Unprofessional?");
+    typeWords("I'm not sure that applies but... okay.");
+
+    cout << "\n===== End of Scene 4 =====\n";
+}
+
+/* ---------- Standalone Main ---------- */
+int main() {
+    scene_billboard();
+    return 0;
 }
