@@ -32,6 +32,7 @@ int main() {
 void scene_introduction() {
     int choice;
 
+// Ferrer
     cout << "\n========== SCENE 1: INTRODUCTION ==========\n\n";
 
     cout << "Robert: Obviously.\n";
