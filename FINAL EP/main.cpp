@@ -44,9 +44,7 @@ int main() {
 // =================================================
 void scene_introduction() {
     int choice;
-
-    typeText("\nSIR TRINY KO LANG TO BHALA KA SIR IF WANT NYU PO ITO ISAMA DIN GUSTO KO LANG LAGYAN NG EFFECT PARA ANGAS LANG TINGNAN\n");
-
+    
     typeText("\n========== SCENE 1: INTRODUCTION ==========\n");
 
     typeText("Robert: Obviously.");
