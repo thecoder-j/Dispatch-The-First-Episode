@@ -1,108 +1,124 @@
 #include <iostream>
-#include <unistd.h> // usleep
+#include <unistd.h>
 using namespace std;
 
 /* ---------- Typing Effects ---------- */
 
-// Word-by-word (dialogue / narration)
-void typeWords(const string& text) {
+// WORD-by-word (dialogue)
+void typeWords(string text, int delay = 80000) {
     string word = "";
     for (char c : text) {
         if (c == ' ') {
             cout << word << " ";
             cout.flush();
-            usleep(90000);
+            usleep(delay);
             word = "";
         } else {
             word += c;
         }
     }
     cout << word << endl;
-    usleep(90000);
+    usleep(delay);
 }
 
-// Character-by-character (thoughts / emphasis)
-void typeChars(const string& text) {
-    for (char c : text) {
-        cout << c;
-        cout.flush();
-        usleep(30000);
-    }
-    cout << endl;
+// LINE-by-line (actions)
+void typeLine(string text, int delay = 200000) {
+    cout << text << endl;
+    usleep(delay);
 }
-
-/* ---------- Global Variable ---------- */
-int Blazer_Impression_Score = 0;
 
 /* ---------- Scene 3 ---------- */
 void scene_bar_flambae() {
     int choice;
 
-    cout << "\n--- Scene 3: Bar Flambae ---\n\n";
+    cout << "\n===== Scene 3: Bar Flambae =====\n\n";
 
-    typeWords("The bar is packed with off duty heroes and half broken furniture.");
-    typeWords("Music thumps but the air suddenly heats up.");
-    typeWords("Flambae stands near the counter flames licking his hands.");
+    typeLine("*A glass shatters nearby*  (╯°□°）╯︵ ┻━┻");
+    typeWords("Mecha Man: What're you doing?");
+    typeWords("Person: Hey! Bitch!..... Hey! I'm talkin' to you bitch!");
+    typeWords("Mecha Man: Alright, just so you know, I only turned around cause someone yelled,");
+    typeWords("not because I'm a bitch or anything.");
 
-    typeChars("This is already unstable.");
+    typeWords("Flambae: Don't you watch the news? This is a superhero bar.");
+    typeWords("Mecha Man: Oh, wow, are you a superhero? That's so cool.");
+    typeWords("Is this your power?");
+    typeWords("You're like, tell people obvious shit guy?");
 
-    cout << "(🔥ಠ_ಠ) *fwoosh*\n";
-    usleep(200000);
+    typeWords("Flambae: You're really gonna act like you don't remember me?");
+    typeWords("Mecha Man: Wait, it's coming back to me...");
+    typeWords("Yeah, it's coming back to me...");
 
-    typeWords("People shout and scatter as the fire grows.");
+    cout << "\n1. Dr. Don't Do Shit";
+    cout << "\n2. Mr. Wet Ponytail";
+    cout << "\n3. Sunglasses at Night Guy";
+    cout << "\nChoice: ";
+    cin >> choice;
 
-    cout << "\nChoose your action:\n";
-    cout << "1. Throw Water\n";
-    cout << "2. Throw Alcohol\n";
-    cout << "Choice: ";
+    typeWords("Oh wait, I know it.");
+
+    if (choice == 1) {
+        typeWords("You are Dr. Don't Do Shit.");
+        typeWords("Your deal is you walk up to people, look threatening,");
+        typeWords("talk a big game, then don't do shit about it.");
+        typeWords("Also, you're not a real doctor cause you're a fuckin' idiot.");
+    }
+    else if (choice == 2) {
+        typeWords("You are Mr. Wet Ponytail.");
+        typeWords("Your superpower is in your ponytail, which aside from being disgusting,");
+        typeWords("has the ability to never not be wet.");
+        typeWords("In battle, you whip it around and anyone it touches fuckin' kills themself.");
+    }
+    else if (choice == 3) {
+        typeWords("You are Sunglasses Indoors at Night Guy.");
+        typeWords("Your superpower is letting everyone know in the room");
+        typeWords("that you're a douchebag.");
+        typeWords("Cause you should literally never do that.");
+    }
+    else {
+        typeWords("Mecha Man: ...Yeah, I lost it.");
+    }
+
+    typeWords("Flambae: You good?");
+    typeWords("Person: Sorry, I choked on my spit.");
+    typeWords("No, Mecha Bitch. I control the fire--");
+
+    typeWords("Mecha Man: The fire?");
+    typeWords("Flambae: And the flame.");
+    typeWords("And my skin does not burn.");
+    typeWords("I am Flambae.");
+
+    typeWords("Mecha Man: Wait, oh shit. I do remember you.");
+    typeWords("You're that shitty villain I busted up.");
+
+    typeWords("Flambae: Not anymore, Mecha Dick.");
+    typeWords("As I literally just said, I am Flambae, a real superhero.");
+    typeWords("And you are not Mecha Man anymore.");
+    typeWords("So you need to get the fuck out of here.");
+
+    cout << "\n1. Water";
+    cout << "\n2. Alcohol";
+    cout << "\nChoice: ";
     cin >> choice;
 
     if (choice == 1) {
-        typeWords("You grab the nearest bucket of water.");
-
-        cout << "(╯°□°）╯︵ 💧\n";
-        usleep(200000);
-
-        typeWords("The flames hiss violently and die down.");
-        typeWords("Flambae screams as the heat collapses inward.");
-
-        cout << "(×_×) *steam rises*\n";
-        usleep(200000);
-
-        typeWords("The bar smells like smoke and regret.");
-        typeWords("Witnesses look shaken but relieved.");
-
-        Blazer_Impression_Score += 1;
+        typeLine("*You throw water on Flambae*  (っ・ω・)っ💧");
+        typeWords("Mecha Man: There. The easy way.");
+        typeWords("Flambae: I've been waiting a long time for this.");
+        typeLine("*Flambae charges, slips, and knocks himself out*  (x_x)");
     }
     else if (choice == 2) {
-        typeWords("You reach for a bottle behind the bar.");
-
-        cout << "(ง🔥_🔥)ง *glass shatters*\n";
-        usleep(200000);
-
-        typeWords("Alcohol splashes across the flames.");
-
-        cout << "(🔥🔥🔥) *WHOOM*\n";
-        usleep(200000);
-
-        typeWords("Fire erupts toward the ceiling.");
-        typeWords("People scream and dive for cover.");
-
-        typeChars("That was loud.");
-
-        typeWords("The moment burns itself into everyone's memory.");
-
-        Blazer_Impression_Score += 3;
+        typeLine("*You throw alcohol on Flambae*  (っ🔥)っ🥃");
+        typeLine("*The flames explode upward*  (🔥🔥🔥)");
+        typeWords("Flambae: OH YOU FUCKED UP.");
     }
     else {
-        typeWords("You freeze.");
-        typeWords("Security rushes in as the situation spirals.");
+        typeWords("Mecha Man: Yeah... bad call.");
     }
 
-    cout << "\n[Blazer Impression Score: " << Blazer_Impression_Score << "]\n";
+    cout << "\n===== End of Scene 3 =====\n";
 }
 
-/* ---------- Main (Standalone Testing) ---------- */
+/* ---------- Standalone Main ---------- */
 int main() {
     scene_bar_flambae();
     return 0;
