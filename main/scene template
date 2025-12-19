@@ -1,0 +1,85 @@
+//since the scenes are written separately, this is the guide in order to ensure 
+that all code is cohesive and consistent.
+
+#include <iostream>
+#include <thread>
+#include <chrono>
+#include <sstream>
+#include <limits>
+using namespace std;
+
+/* ---------- Text Effects ---------- */
+
+// Word-by-word for dialogue
+void printWords(const string &text, int wordDelayMs = 150) {
+    stringstream ss(text);
+    string word;
+    while (ss >> word) {
+        cout << word << " " << flush;
+        this_thread::sleep_for(chrono::milliseconds(wordDelayMs));
+    }
+    cout << endl;
+}
+
+// Line-by-line for actions
+void printLines(const string &text, int lineDelayMs = 600) {
+    stringstream ss(text);
+    string line;
+    while (getline(ss, line, '\n')) {
+        cout << line << endl;
+        this_thread::sleep_for(chrono::milliseconds(lineDelayMs));
+    }
+}
+
+// Choice reader
+int readChoice(int minOption, int maxOption) {
+    int choice;
+    while (true) {
+        if (cin >> choice && choice >= minOption && choice <= maxOption) return choice;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Please enter a valid number (" << minOption << "-" << maxOption << "): ";
+    }
+}
+
+/* ---------- Global Scores ---------- */
+int impressionScore = 0;
+int publicChaos = 0;
+
+/* ---------- Scene Template ---------- */
+void scene_example() {
+    int choice;
+
+    cout << "\n===== Scene: Example =====\n\n";
+
+    // Actions
+    printLines("*The room shakes as thunder cracks*");
+    
+    // Dialogue
+    printWords("Hero: What is happening here?");
+    printWords("Villain: You should have stayed home!");
+
+    // Choices
+    cout << "\n1. Confront\n2. Run\nChoice: ";
+    choice = readChoice(1, 2);
+
+    if (choice == 1) {
+        printLines("*You charge at the villain*");
+        impressionScore += 1;
+        publicChaos += 2;
+    } else {
+        printLines("*You run to the exit*");
+        impressionScore -= 1;
+        publicChaos += 1;
+    }
+
+    cout << "\n===== End of Scene =====\n";
+    cout << "Current Impression Score: " << impressionScore << endl;
+    cout << "Current Public Chaos: " << publicChaos << endl;
+}
+
+/* ---------- Main ---------- */
+int main() {
+    scene_example();  // Replace with your scene function
+    return 0;
+}
