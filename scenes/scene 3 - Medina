@@ -1,123 +1,168 @@
-/* ---------- Scene 3: Flambae Bar ---------- */
+#include <iostream>
+#include <thread>
+#include <chrono>
+#include <sstream>
+using namespace std;
+
+int impressionScore = 0;
+int publicChaos = 0;
+
+// Word-by-word printing for dialogue
+void printWords(const string &text, int wordDelayMs = 150) {
+    stringstream ss(text);
+    string word;
+    while (ss >> word) {
+        cout << word << " " << flush;
+        this_thread::sleep_for(chrono::milliseconds(wordDelayMs));
+    }
+    cout << endl;
+}
+
+// Line-by-line printing for actions
+void printLines(const string &text, int lineDelayMs = 600) {
+    stringstream ss(text);
+    string line;
+    while (getline(ss, line, '\n')) {
+        cout << line << endl;
+        this_thread::sleep_for(chrono::milliseconds(lineDelayMs));
+    }
+}
+
+// Choice reader
+int readChoice() {
+    int choice;
+    while (true) {
+        if (cin >> choice) return choice;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Please enter a valid number: ";
+    }
+}
+
+/* ---------- Scene 3: Bar Flambae ---------- */
 void scene_bar_flambae() {
     int choice;
 
     cout << "\n===== Scene 3: Bar Flambae =====\n\n";
 
-    typeLine("*A glass shatters nearby*  (╯°□°）╯︵ ┻━┻");
-    typeWords("Mecha Man: What're you doing?");
-    typeWords("Person: Hey! Bitch!..... Hey! I'm talkin' to you bitch!");
-    typeWords("Mecha Man: Alright, just so you know, I only turned around cause someone yelled,");
-    typeWords("not because I'm a bitch or anything.");
+    printLines("*A glass shatters nearby*  (╯°□°）╯︵ ┻━┻");
+    printWords("Mecha Man: What're you doing?");
+    printWords("Person: Hey! Bitch!..... Hey! I'm talkin' to you, bitch!");
+    printWords("Mecha Man: Alright, just so you know, I only turned around cause someone yelled, not because I'm a bitch or anything.");
 
-    typeWords("Flambae: Don't you watch the news? This is a superhero bar.");
-    typeWords("Mecha Man: Oh, wow, are you a superhero? That's so cool.");
-    typeWords("Is this your power?");
-    typeWords("You're like, tell people obvious shit guy?");
+    printWords("Person: Don't you watch the news? This is a superhero bar.");
+    printWords("Mecha Man: Oh, wow, are you a superhero? That's so cool.");
+    printWords("Is this your power?");
+    printWords("You're like, tell people obvious shit guy?");
 
-    typeWords("Flambae: You're really gonna act like you don't remember me?");
-    typeWords("Mecha Man: Wait, it's coming back to me...");
-    typeWords("Yeah, it's coming back to me...");
+    printWords("Person: You're really gonna act like you don't remember me?");
+    printWords("Mecha Man: Wait, it's coming back to me...");
+    printWords("Yeah, it's coming back to me...");
 
-    // --- Choice 1: Insult ---
-    do {
-        cout << "\n1. Dr. Don't Do Shit";
-        cout << "\n2. Mr. Wet Ponytail";
-        cout << "\n3. Sunglasses at Night Guy";
-        cout << "\nChoice: ";
-        cin >> choice;
-    } while (choice < 1 || choice > 3);
+    // Character identity choice
+    cout << "\n1. Dr. Don't Do Shit";
+    cout << "\n2. Mr. Wet Ponytail";
+    cout << "\n3. Sunglasses at Night Guy";
+    cout << "\nChoice: ";
+    choice = readChoice();
 
-    typeWords("Oh wait, I know it.");
-
-    // Flavor choice with minor reputation impact
-    Blazer_Impression_Score -= 1;
+    printWords("Oh wait, I know it.");
 
     if (choice == 1) {
-        typeWords("You are Dr. Don't Do Shit.");
-        typeWords("Your deal is you walk up to people, look threatening,");
-        typeWords("talk a big game, then don't do shit about it.");
-        typeWords("Also, you're not a real doctor cause you're a fuckin' idiot.");
+        printWords("You are Dr. Don't Do Shit.");
+        printWords("Your deal is you walk up to people, look threatening, talk a big game, then don't do shit about it.");
+        printWords("Also, you're not a real doctor cause you're a fuckin' idiot.");
+        impressionScore -= 1;  // bad impression
     }
     else if (choice == 2) {
-        typeWords("You are Mr. Wet Ponytail.");
-        typeWords("Your superpower is in your ponytail, which aside from being disgusting,");
-        typeWords("has the ability to never not be wet.");
-        typeWords("In battle, you whip it around and anyone it touches fuckin' kills themself.");
+        printWords("You are Mr. Wet Ponytail.");
+        printWords("Your superpower is in your ponytail, which aside from being disgusting, has the ability to never not be wet.");
+        printWords("In battle, you whip it around and anyone it touches fuckin' kills themself.");
+        impressionScore -= 2;  // worse impression
+    }
+    else if (choice == 3) {
+        printWords("You are Sunglasses Indoors at Night Guy.");
+        printWords("Your superpower is letting everyone know in the room that you're a douchebag.");
+        printWords("Cause you should literally never do that.");
+        impressionScore -= 1;
     }
     else {
-        typeWords("You are Sunglasses Indoors at Night Guy.");
-        typeWords("Your superpower is letting everyone know in the room");
-        typeWords("that you're a douchebag.");
-        typeWords("Cause you should literally never do that.");
+        printWords("Mecha Man: ...Yeah, I lost it.");
+        impressionScore -= 1;
     }
+    
+    printLines("*Someone chuckles*");
+    printWords("Person: You good?");
+    printWords("Woman: Sorry, I choked on my spit.");
+    printWords("Person: No, Mecha Bitch. I control the fire--");
 
-    typeWords("Flambae: You good?");
-    typeLine("*Someone chuckles*");
-    typeWords("Woman: Sorry, I choked on my spit.");
-    typeWords("No, Mecha Bitch. I control the fire--");
+    printWords("Mecha Man: The fire?");
+    printWords("Person: And the flame.");
+    printWords("And my skin does not burn.");
+    printWords("I am Flambae.");
 
-    typeWords("Mecha Man: The fire?");
-    typeWords("Flambae: And the flame.");
-    typeWords("And my skin does not burn.");
-    typeWords("I am Flambae.");
+    printWords("Mecha Man: Wait, oh shit. I do remember you.");
+    printWords("You're that shitty villain I busted up.");
 
-    typeWords("Mecha Man: Wait, oh shit. I do remember you.");
-    typeWords("You're that shitty villain I busted up.");
+    printWords("Flambae: Not anymore, Mecha Dick.");
+    printWords("As I literally just said, I am Flambae, a real superhero.");
+    printWords("And you are not Mecha Man anymore.");
+    printWords("So you need to get the fuck out of here.");
 
-    typeWords("Flambae: Not anymore, Mecha Dick.");
-    typeWords("As I literally just said, I am Flambae, a real superhero.");
-    typeWords("And you are not Mecha Man anymore.");
-    typeWords("So you need to get the fuck out of here.");
-
-    // --- Choice 2: Conflict Resolution ---
-    do {
-        cout << "\n1. Water";
-        cout << "\n2. Alcohol";
-        cout << "\nChoice: ";
-        cin >> choice;
-    } while (choice < 1 || choice > 2);
+    // Water or Alcohol choice
+    cout << "\n1. Water";
+    cout << "\n2. Alcohol";
+    cout << "\nChoice: ";
+    choice = readChoice();
 
     if (choice == 1) {
-        // Less destructive, still humiliating
-        Blazer_Impression_Score += 1;
-
-        typeLine("*You throw water on Flambae*  (っ・ω・)っ💧");
-        typeWords("Mecha Man: There. The easy way.");
-        typeWords("Flambae: I've been waiting a long time for this.");
-        typeLine("*Flambae charges, slips, and knocks himself out*  (x_x)");
-        typeLine("*Coupe and Punch-up runoff to get him*");
-        typeWords("Dobble: Hey, why don't you do us a favor and step out of this bar.");        
-        typeWords("Mecha Man: I get it. Can you just tell Blazer I'm outside?");
-        typeLine("*Dopple duplicates*");
-        typeWords("Dopple: OUT!.");
-        typeWords("Mecha Man: Relax! I'm leaving.");
+        printLines("*You throw water on Flambae*  (っ・ω・)っ💧");
+        printWords("Mecha Man: There. The easy way.");
+        printWords("Flambae: I've been waiting a long time for this.");
+        printLines("*Flambae charges, slips, and knocks himself out*  (x_x)");
+        printLines("*Coupe and Punch-up runoff to get him*");
+        printWords("Dobble: Hey, why don't you do us a favor and step out of this bar.");        
+        printWords("Mecha Man: I get it. Can you just tell Blazer I'm outside?");
+        printLines("*Dopple duplicates*");
+        printWords("Dopple: OUT!.");
+        printWords("Mecha Man: Relax! I'm leaving.");
+        publicChaos += 1;  // minor chaos
+        impressionScore += 1; // Flambae slightly impressed by efficiency
+    }
+    else if (choice == 2) {
+        printLines("*You throw alcohol on Flambae*  (っ🔥)っ🥃\n*The flames burn Flambae as he screams*  (🔥🔥🔥)");
+        printWords("Mecha Man: Sorry, which way was that.");
+        printLines("*A man hurries to grab a tray*");
+        printWords("Waiter: Hey!.");
+        printWords("Coupe: No, Punch-up, you are literally fanning the flames right now.");
+        printWords("Punch-up: Shit, you're right. Anybody got a rug?");
+        printWords("Flambae: Fuck!");
+        printLines("*Flambae rushes out of the bar screaming*");
+        printWords("Punch-up: You gotta drop and roll, lad");
+        printWords("Mecha Man: I thought he doesn't burn");
+        printWords("Coupe: Some people become scared before they even know they're hurt...");
+        printWords("Coupe: like babies.");
+        printLines("*Coupe walks out*");
+        printWords("Dopple: HEY! Mecha Dick. Get the fuck out of here.");
+        printWords("Mecha Man: I get it. Can you just tell Blazer I'm outside?");
+        printLines("*Dopple duplicates*");
+        printWords("Dopple: OUT!.");
+        printWords("Mecha Man: Relax! I'm leaving.");
+        publicChaos += 3;  // major chaos
+        impressionScore -= 1; // Flambae slightly annoyed
     }
     else {
-        // Public chaos, reputational damage
-        Blazer_Impression_Score -= 2;
-        causedPublicChaos = true;
-
-        typeLine("*You throw alcohol on Flambae*  (っ🔥)っ🥃");
-        typeLine("*The flames burn Flambae as he screams*  (🔥🔥🔥)");
-        typeWords("Mecha Man: Sorry, which way was that.");
-        typeLine("*A man hurries to grab a tray*");
-        typeWords("Waiter: Hey!.");
-        typeWords("Coupe: No, Punch-up, you are literally fanning the flames right now.");
-        typeWords("Punch-up: Shit, you're right. Anybody got a rug?");
-        typeWords("Flambae: Fuck!");
-        typeLine("*Flambae rushes out of the bar screaming*");
-        typeWords("Punch-up: You gotta drop and roll, lad");
-        typeWords("Mecha Man: I thought he doesn't burn");
-        typeWords("Coupe: Some people become scared before they even know they're hurt...");
-        typeWords("Coupe: like babies.");
-        typeLine("*Coupe walks out*");
-        typeWords("Dopple: HEY! Mecha Dick. Get the fuck out of here.");
-        typeWords("Mecha Man: I get it. Can you just tell Blazer I'm outside?");
-        typeLine("*Dopple duplicates*");
-        typeWords("Dopple: OUT!.");
-        typeWords("Mecha Man: Relax! I'm leaving.");
+        printWords("Mecha Man: Yeah... bad call.");
     }
 
+    // Show score at end
     cout << "\n===== End of Scene 3 =====\n";
+    cout << "Current Impression Score: " << impressionScore << endl;
+    cout << "Current Public Chaos: " << publicChaos << endl;
+}
+
+/* ---------- Standalone Main ---------- */
+int main() {
+    scene_bar_flambae();
+    return 0;
 }
