@@ -2,10 +2,16 @@
 #include <thread>
 #include <chrono>
 #include <sstream>
+#include <limits>
 using namespace std;
 
+// Global variables (matching project requirements)
+int impressionScore = 0;
+int publicChaos = 0;
+bool isRomanticTensionActive = false;  // REQUIRED by project!
+bool isMerciful = false;
+
 // ---------- Typing Effects ----------
-// Word-by-word for dialogue
 void printWords(const string &text, int wordDelayMs = 120) {
     stringstream ss(text);
     string word;
@@ -16,7 +22,6 @@ void printWords(const string &text, int wordDelayMs = 120) {
     cout << endl;
 }
 
-// Line-by-line for actions
 void printLines(const string &text, int lineDelayMs = 500) {
     stringstream ss(text);
     string line;
@@ -26,38 +31,54 @@ void printLines(const string &text, int lineDelayMs = 500) {
     }
 }
 
-// Simple choice reader
-int readChoice() {
+// Wait for Enter key press
+void waitForEnter(const string &prompt = "\n[Press Enter to continue...]") {
+    cout << prompt << flush;
+    cin.get();
+}
+
+// Choice reader with validation
+int readChoice(int min = 1, int max = 3) {
     int choice;
     while (true) {
-        if (cin >> choice) return choice;
+        if (cin >> choice && choice >= min && choice <= max) {
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            return choice;
+        }
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Please enter a valid number: ";
+        cout << "Invalid choice. Please enter " << min << "-" << max << ": ";
     }
 }
 
-// ---------- Scene 4: Billboard ----------
-void scene_billboard(int &relationshipScore, int &publicChaos) {
+// ---------- Scene 5: Billboard ----------
+void scene_billboard() {
     int choice;
 
-    cout << "\n===== Scene 4: Billboard =====\n\n";
+    // Wait for player to start the scene
+    waitForEnter("\n[Press Enter to begin Scene 5...]");
+    
+    cout << "\n=========================================\n";
+    cout << "      SCENE 5: BILLBOARD ROMANCE\n";
+    cout << "=========================================\n\n";
 
-    // Actions
-    printLines("*Mecha Man flies to the alleyway*");
-    printLines("*Blonde Blazer walks out the bar*");
+    // Scene setup
+    printLines("*Mecha Man flies through the night sky*");
+    printLines("*He lands in the alleyway behind the bar*");
+    this_thread::sleep_for(chrono::milliseconds(800));
+    printLines("*Blonde Blazer walks out, holding two drinks*");
 
-    // Dialogue
     printWords("Blonde Blazer: Hey, I couldn't find you.");
     printWords("Mecha Man: Uh, it's cool. I was just admiring the art on this dumpster.");
     printWords("Can't tell why anyone would put those words together.");
-    printLines("*Shows a dumpster with 'FART BART' plastered on it*");
+    printLines("*He gestures to graffiti reading 'FART BART'*");
 
     printWords("Mecha Man: Why're you holding two drinks?");
     printWords("Blonde Blazer: Nightcap?");
     printWords("Mecha Man: You're trouble.");
     printWords("Blonde Blazer: Actually, according to the bartender, that's exactly what you are.");
 
+    this_thread::sleep_for(chrono::milliseconds(600));
     printWords("Blonde Blazer: What happened in there?");
     printWords("Blonde Blazer: I walk out and the bartender's pissed. The whole energy is awkward...");
     printWords("...And why did it smell like burnt hair?");
@@ -67,116 +88,264 @@ void scene_billboard(int &relationshipScore, int &publicChaos) {
     printWords("Mecha Man: Yeah. Does that not sound convincing enough?");
     printWords("Blonde Blazer: Hold these. I know a place. It's a little out there. Easier if we fly.");
 
-    printLines("*Mecha Man and Blonde Blazer land on the billboard*  (ง•̀_•́)ง");
-    printLines("*City lights glow beneath them*  ✨🏙️");
+    printLines("\n*They take to the sky*");
+    printLines("*City lights blur beneath them*  ✨");
+    this_thread::sleep_for(chrono::milliseconds(1000));
+    printLines("*They land gracefully on a massive billboard*  (ง•̀_•́)ง");
+    printLines("*The city sprawls below, glittering like stars*  🏙️");
 
     printWords("Robert: I actually thought you were taking us to sit on it.");
     printWords("Blonde Blazer: Hmm! Oh yeah, that woulda been cool. But no, this is better 'cause you can see it.");
     printWords("And it looks like there's a couple up there already.");
 
-    // Player choice
-    cout << "\n1. I really needed this.\n2. Thanks for helping me.\n3. Sorry about the spit thing.\nChoice: ";
-    choice = readChoice();
+    this_thread::sleep_for(chrono::milliseconds(800));
+
+    // First choice - Opening up
+    cout << "\n+---------------------------------------+\n";
+    cout << "|  How do you respond?                  |\n";
+    cout << "+---------------------------------------+\n";
+    cout << "|  1. I really needed this              |\n";
+    cout << "|     (Vulnerable and honest)           |\n";
+    cout << "|                                       |\n";
+    cout << "|  2. Thanks for helping me             |\n";
+    cout << "|     (Grateful but guarded)            |\n";
+    cout << "|                                       |\n";
+    cout << "|  3. Sorry about the spit thing        |\n";
+    cout << "|     (Self-deprecating humor)          |\n";
+    cout << "+---------------------------------------+\n";
+    cout << "Choice: ";
+    choice = readChoice(1, 3);
 
     if (choice == 1) {
         printWords("Robert: All this has been pretty overwhelming, you know.");
         printWords("I don't get out often, and I think I really needed this.");
         printWords("So thank you. For bringing me out. I had a really great time.");
-        relationshipScore += 2; // good bonding
+        
+        impressionScore += 2;  // Vulnerable, emotionally open
+        
+        printLines("\n*Blonde Blazer's expression softens*");
+        printWords("Blonde Blazer (thinking): He's more open than I expected...");
+        
     } else if (choice == 2) {
         printWords("Robert: I really appreciate you coming to my rescue back there.");
         printWords("I still think I could've handled it, but... Thanks. I should've just said that.");
         printWords("But yep. I'm still talking.");
-        relationshipScore += 1; // moderate bonding
+        
+        impressionScore += 1;  // Polite but slightly awkward
+        
+        printLines("\n*Blonde Blazer smiles at his rambling*");
+        printWords("Blonde Blazer (thinking): He's sweet when he's nervous.");
+        
     } else if (choice == 3) {
         printWords("Robert: I know I shouldn't bring it up, but I am seriously sorry about the whole spitting thing.");
-        printWords("Blonde Blazer: Yeah, usually like a second date kinda thing with me. I'm joking. Not a date.");
+        printWords("Blonde Blazer: Yeah, that's usually like a second date kinda thing with me.");
+        this_thread::sleep_for(chrono::milliseconds(800));
+        printWords("Blonde Blazer: I'm joking. I'm joking. This is not a date.");
         printWords("Robert: No. Totally. Yeah.");
-        relationshipScore += 0; // neutral
-    } else {
-        printWords("Robert: Yeah... ignore that.");
+        
+        impressionScore += 3;  // Confident humor, addresses awkwardness
+        
+        printLines("\n*Blonde Blazer laughs genuinely*");
+        printWords("Blonde Blazer (thinking): He's funny. I like that.");
     }
 
-    printWords("Blonde Blazer: Don't worry about it, Robert Roberson.");
+    this_thread::sleep_for(chrono::milliseconds(1000));
+    printWords("Blonde Blazer: Don't you worry about it, Robert Roberson.");
+    
+    this_thread::sleep_for(chrono::milliseconds(800));
     printWords("Robert: How do you know my name?");
+    this_thread::sleep_for(chrono::milliseconds(600));
     printWords("Blonde Blazer: Whoops!");
+    this_thread::sleep_for(chrono::milliseconds(500));
     printWords("Robert: What's going on?");
+    
     printWords("Blonde Blazer: Okay, I'll tell you. But only after you tell me how you ended up with a name like that.");
 
-    printWords("Robert: Oh, you mean Robert Roberson the Third?");
+    printWords("Robert: Oh, you mean a name like Robert Roberson the Third?");
     printWords("Blonde Blazer: The Third?! Three times this happened?");
-    printWords("Robert: Grandpa Bobby, then Dad (Robbie), then me. Cause I wanted to be taken seriously.");
+    
+    printWords("Robert: There was grandpa Bobby. Then my dad, who everyone called Robbie.");
+    printWords("Then me. Because I wanted to be taken seriously.");
     printWords("Blonde Blazer: A family tradition.");
-    printWords("Robert: In more ways than one. Gramps was the first Mecha Man. He died in the suit before I was born.");
-    printWords("Dad was killed fighting Shroud. That's when I took over. There was a little inheritance and life insurance money.");
+    printWords("Robert: In more ways than one.");
+
+    this_thread::sleep_for(chrono::milliseconds(800));
+    printWords("Robert: Gramps was the first Mecha Man. He died in the suit before I was born.");
+    printWords("Dad was killed fighting Shroud. That's when I took over.");
+    printWords("There was a little inheritance and life insurance money, but...");
 
     printWords("Blonde Blazer: I'm so sorry. I didn't realize.");
     printWords("Robert: Just your run-of-the-mill sad superhero origin story.");
-    printWords("Blonde Blazer: The family tradition is dying in that suit. Which I guess I don't have to worry about anymore.");
+    printWords("The family tradition is dying in that suit.");
+    printWords("Which I guess I don't have to worry about anymore.");
 
-    printWords("Mecha Man: What is it?");
-    printWords("Blonde Blazer: I'm not quite drunk enough to share my origin story yet. But remind me to tell you someday.");
+    printWords("Blonde Blazer: I'm not quite drunk enough to share my origin story just yet.");
+    printWords("But remind me someday.");
     printWords("Robert: Definitely.");
 
-    printLines("*Blonde Blazer sits close to Robert*");
-    printLines("*She gently touches Robert’s face*  (〃ω〃)");
-    printLines("*Blonde Blazer removes his mask*  ( ﾉ ﾟｰﾟ)ﾉ");
-    printLines("*She looks intently into his eyes* (*≧︶≦))(￣▽￣* )ゞ");
+    this_thread::sleep_for(chrono::milliseconds(1200));
+    printLines("\n*Blonde Blazer shifts closer to Robert*");
+    printLines("*The city noise fades away*");
+    printLines("*She gently reaches up and touches his face*  (〃ω〃)");
+    this_thread::sleep_for(chrono::milliseconds(800));
+    printLines("*She carefully removes his mask*  ( ﾉ ﾟｰﾟ)ﾉ");
+    printLines("*Her eyes meet his*");
+    this_thread::sleep_for(chrono::milliseconds(1000));
     printWords("Blonde Blazer: We can work with this.");
 
-    cout << "\n1. Kiss her\n2. Let the moment pass\nChoice: ";
-    choice = readChoice();
+    // THE CRITICAL ROMANCE CHOICE
+    cout << "\n+---------------------------------------+\n";
+    cout << "|  What do you do?                      |\n";
+    cout << "+---------------------------------------+\n";
+    cout << "|  1. Kiss her                          |\n";
+    cout << "|     (Bold, vulnerable, passionate)    |\n";
+    cout << "|                                       |\n";
+    cout << "|  2. Let the moment pass               |\n";
+    cout << "|     (Patient, emotionally aware)      |\n";
+    cout << "+---------------------------------------+\n";
+    cout << "Choice: ";
+    choice = readChoice(1, 2);
 
     if (choice == 1) {
-        printLines("*You lean in and kiss her*  ( ˘ ³˘)♥");
+        // KISS - Bold but creates complicated tension
+        printLines("\n*You lean in slowly*");
+        printLines("*Your lips meet hers*  ( ˘ ³˘)♥");
+        this_thread::sleep_for(chrono::milliseconds(1200));
+        printLines("*For a brief moment, she kisses back*");
+        printLines("*Then she pulls away gently, hand on your chest*");
+        
         printWords("Blonde Blazer: No. This... I'm sorry if I gave the wrong impression.");
-        relationshipScore += 2; // risky but bonding
-        publicChaos += 1; // small attention
+        printWords("Robert: Oh god, I--");
+        printWords("Blonde Blazer: You didn't misread anything. That's the problem.");
+        
+        isRomanticTensionActive = true;  // REQUIRED BY PROJECT!
+        impressionScore += 3;  // Memorable, shows vulnerability
+        publicChaos += 1;  // Public display
+        
+        printLines("\n*An awkward but electric silence*");
+        this_thread::sleep_for(chrono::milliseconds(800));
+        printWords("Blonde Blazer (thinking): Dammit. This is exactly what I was afraid of.");
+        
+        cout << "\n[♥ ROMANTIC TENSION: ACTIVE - Kiss created complicated feelings ♥]\n";
+        
     } else if (choice == 2) {
-        printLines("*You hesitate and pull back*  (•_•)");
-        printWords("Blonde Blazer: Sorry. I'm actually here with a purpose.");
-        relationshipScore += 1; // safe bonding
-    } else {
-        printWords("Robert: Uh... yeah.");
+        // DON'T KISS - Shows emotional intelligence
+        printLines("\n*You hesitate, reading the moment*  (•_•)");
+        printLines("*You pull back slightly, giving her space*");
+        
+        printWords("Robert: This feels... complicated.");
+        this_thread::sleep_for(chrono::milliseconds(600));
+        printWords("Blonde Blazer: It is. And I appreciate you sensing that.");
+        
+        isRomanticTensionActive = true;  // REQUIRED BY PROJECT!
+        impressionScore += 4;  // Emotional maturity = very attractive
+        
+        printLines("\n*Blonde Blazer looks both relieved and... disappointed?*");
+        this_thread::sleep_for(chrono::milliseconds(800));
+        printWords("Blonde Blazer (thinking): Why does doing the right thing feel this frustrating?");
+        
+        cout << "\n[♥ ROMANTIC TENSION: ACTIVE - Unresolved chemistry ♥]\n";
     }
 
+    this_thread::sleep_for(chrono::milliseconds(1000));
+    
+    // Aftermath
     printWords("Robert: Oh no.");
     printWords("Blonde Blazer: It's my fault.");
     printWords("Robert: I'm so sorry, I totally misread that--");
     printWords("Blonde Blazer: You didn't. I mean, you did, but...");
-    printWords("The way I went about tonight... it was all a little loose, a little unprofessional...");
+    printWords("The way I went about tonight was a little unprofessional.");
+
     printWords("Robert: Unprofessional? I'm not sure that applies but... okay.");
 
-    printWords("Blonde Blazer: I'm actually here on official business... how I know your name, the proposition I mentioned right before you spit in my mouth--");
+    printWords("Blonde Blazer: I'm actually here on official business.");
+    printWords("That's how I know your name. That's the proposition I mentioned right before you spit in my mouth--");
     printWords("Robert: Still mortified about that.");
     printWords("Blonde Blazer: It's fine. Do you remember a superhero named Trackstar?");
+    
     printWords("Robert: Remember? Of course. He's like family I haven't talked to in a while. What about him?");
-    printWords("Blonde Blazer: I work with him at SDN. He recommended you. Mentioned he worked with your father.");
-    printWords("Robert: Yeah, he was the youngest member of the Brave Brigade, kind of my babysitter for a while. How's he doing?");
+    printWords("Blonde Blazer: I work with him at SDN. He recommended you.");
+    printWords("He mentioned he worked with your father.");
+    
+    printWords("Robert: Yeah, he was the youngest member of the Brave Brigade.");
+    printWords("Kind of my babysitter for a while. How's he doing?");
     printWords("Blonde Blazer: He's doing great. He's why I'm here.");
 
+    this_thread::sleep_for(chrono::milliseconds(1000));
+    
+    // The Offer
     printWords("Blonde Blazer: Robert, I would like to make you an offer.");
-    printWords("In exchange for dispatching and mentoring some of our rookie heroes, SDN can make you Mecha Man again.");
+    printWords("In exchange for dispatching and mentoring some of our rookie heroes,");
+    printWords("SDN can make you Mecha Man again.");
     printWords("But this time with all the resources that a company as big as ours has at their disposal.");
     printWords("No more paying out of pocket for repairs, support staff, the whole shebang.");
 
     printWords("Robert: My suit was totally destroyed...");
     printWords("Blonde Blazer: I saw the report, studied the footage.");
     printWords("It's not totally destroyed, just mostly.");
-    printWords("Big investment, it'll take considerable time and money to get the suit repaired and missing pieces replaced.");
+    
+    printWords("Big investment. It'll take considerable time and money to get the suit repaired");
+    printWords("and missing pieces replaced.");
     printWords("Plenty of time to learn how to dispatch and level up some heroes on our roster.");
-    printWords("Your experience, work ethic, perspective—it's all invaluable. Share it, Robert. You have a lot left to give.");
+    
+    this_thread::sleep_for(chrono::milliseconds(800));
+    printWords("Your experience, work ethic, perspective—it's all invaluable.");
+    printWords("Share it, Robert. You have a lot left to give.");
 
-    cout << "\n===== End of Scene 4 =====\n";
-    cout << "Current Relationship Score: " << relationshipScore << "\n";
-    cout << "Current Public Chaos: " << publicChaos << "\n";
+    // End scene summary
+    cout << "\n=========================================\n";
+    cout << "         End of Scene 5\n";
+    cout << "=========================================\n";
+    
+    // Show status with context
+    cout << "\n+======================================+\n";
+    cout << "|      RELATIONSHIP UPDATE             |\n";
+    cout << "+======================================+\n";
+    
+    if (isRomanticTensionActive) {
+        cout << "|  Romance Status: ACTIVE <3 <3 <3     |\n";
+    } else {
+        cout << "|  Romance Status: ERROR - NOT SET!    |\n";
+    }
+    
+    if (impressionScore >= 10) {
+        cout << "|  Blazer's Interest: VERY HIGH        |\n";
+    } else if (impressionScore >= 7) {
+        cout << "|  Blazer's Interest: HIGH             |\n";
+    } else if (impressionScore >= 4) {
+        cout << "|  Blazer's Interest: MODERATE         |\n";
+    } else {
+        cout << "|  Blazer's Interest: LOW              |\n";
+    }
+    
+    cout << "|                                      |\n";
+    cout << "|  Total Impression: " << impressionScore << "/15               |\n";
+    cout << "|  Public Chaos: " << publicChaos << "/10                   |\n";
+    cout << "+======================================+\n\n";
 }
 
+// ---------- Standalone Main for Testing ----------
 int main() {
-    int relationshipScore = 0;
-    int publicChaos = 0;
-
-    scene_billboard(relationshipScore, publicChaos);
-
+    cout << "\n";
+    cout << "+==========================================+\n";
+    cout << "|                                          |\n";
+    cout << "|        DISPATCH: Robert's Story          |\n";
+    cout << "|         Scene 5 - Billboard Test         |\n";
+    cout << "|                                          |\n";
+    cout << "+==========================================+\n";
+    
+    // Simulate having played through previous scenes
+    impressionScore = 5;  // Assume some score from bar scene
+    publicChaos = 2;      // Assume some chaos from previous scenes
+    
+    scene_billboard();
+    
+    cout << "\n=== FINAL STATS ===\n";
+    cout << "Impression Score: " << impressionScore << "\n";
+    cout << "Public Chaos: " << publicChaos << "\n";
+    cout << "Romantic Tension: " << (isRomanticTensionActive ? "YES" : "NO") << "\n";
+    
+    cout << "\n[Press Enter to Exit]";
+    cin.get();
     return 0;
 }
