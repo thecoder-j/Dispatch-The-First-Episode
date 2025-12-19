@@ -1,33 +1,4 @@
-#include <iostream>
-#include <unistd.h>
-using namespace std;
-
-/* ---------- Typing Effects ---------- */
-
-// WORD-by-word (dialogue)
-void typeWords(string text, int delay = 80000) {
-    string word = "";
-    for (char c : text) {
-        if (c == ' ') {
-            cout << word << " ";
-            cout.flush();
-            usleep(delay);
-            word = "";
-        } else {
-            word += c;
-        }
-    }
-    cout << word << endl;
-    usleep(delay);
-}
-
-// LINE-by-line (actions)
-void typeLine(string text, int delay = 200000) {
-    cout << text << endl;
-    usleep(delay);
-}
-
-/* ---------- Scene 3 ---------- */
+/* ---------- Scene 3: Flambae Bar ---------- */
 void scene_bar_flambae() {
     int choice;
 
@@ -48,13 +19,19 @@ void scene_bar_flambae() {
     typeWords("Mecha Man: Wait, it's coming back to me...");
     typeWords("Yeah, it's coming back to me...");
 
-    cout << "\n1. Dr. Don't Do Shit";
-    cout << "\n2. Mr. Wet Ponytail";
-    cout << "\n3. Sunglasses at Night Guy";
-    cout << "\nChoice: ";
-    cin >> choice;
+    // --- Choice 1: Insult ---
+    do {
+        cout << "\n1. Dr. Don't Do Shit";
+        cout << "\n2. Mr. Wet Ponytail";
+        cout << "\n3. Sunglasses at Night Guy";
+        cout << "\nChoice: ";
+        cin >> choice;
+    } while (choice < 1 || choice > 3);
 
     typeWords("Oh wait, I know it.");
+
+    // Flavor choice with minor reputation impact
+    Blazer_Impression_Score -= 1;
 
     if (choice == 1) {
         typeWords("You are Dr. Don't Do Shit.");
@@ -68,14 +45,11 @@ void scene_bar_flambae() {
         typeWords("has the ability to never not be wet.");
         typeWords("In battle, you whip it around and anyone it touches fuckin' kills themself.");
     }
-    else if (choice == 3) {
+    else {
         typeWords("You are Sunglasses Indoors at Night Guy.");
         typeWords("Your superpower is letting everyone know in the room");
         typeWords("that you're a douchebag.");
         typeWords("Cause you should literally never do that.");
-    }
-    else {
-        typeWords("Mecha Man: ...Yeah, I lost it.");
     }
 
     typeWords("Flambae: You good?");
@@ -96,12 +70,18 @@ void scene_bar_flambae() {
     typeWords("And you are not Mecha Man anymore.");
     typeWords("So you need to get the fuck out of here.");
 
-    cout << "\n1. Water";
-    cout << "\n2. Alcohol";
-    cout << "\nChoice: ";
-    cin >> choice;
+    // --- Choice 2: Conflict Resolution ---
+    do {
+        cout << "\n1. Water";
+        cout << "\n2. Alcohol";
+        cout << "\nChoice: ";
+        cin >> choice;
+    } while (choice < 1 || choice > 2);
 
     if (choice == 1) {
+        // Less destructive, still humiliating
+        Blazer_Impression_Score += 1;
+
         typeLine("*You throw water on Flambae*  (っ・ω・)っ💧");
         typeWords("Mecha Man: There. The easy way.");
         typeWords("Flambae: I've been waiting a long time for this.");
@@ -113,7 +93,11 @@ void scene_bar_flambae() {
         typeWords("Dopple: OUT!.");
         typeWords("Mecha Man: Relax! I'm leaving.");
     }
-    else if (choice == 2) {
+    else {
+        // Public chaos, reputational damage
+        Blazer_Impression_Score -= 2;
+        causedPublicChaos = true;
+
         typeLine("*You throw alcohol on Flambae*  (っ🔥)っ🥃");
         typeLine("*The flames burn Flambae as he screams*  (🔥🔥🔥)");
         typeWords("Mecha Man: Sorry, which way was that.");
@@ -134,14 +118,6 @@ void scene_bar_flambae() {
         typeWords("Dopple: OUT!.");
         typeWords("Mecha Man: Relax! I'm leaving.");
     }
-    else {
-        typeWords("Mecha Man: Yeah... bad call.");
-    }
-    cout << "\n===== End of Scene 3 =====\n";
-}
 
-/* ---------- Standalone Main ---------- */
-int main() {
-    scene_bar_flambae();
-    return 0;
+    cout << "\n===== End of Scene 3 =====\n";
 }
