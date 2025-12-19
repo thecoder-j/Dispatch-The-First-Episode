@@ -2,6 +2,7 @@
 #include <thread>
 #include <chrono>
 #include <sstream>
+#include <limits>
 using namespace std;
 
 int impressionScore = 0;
@@ -28,24 +29,40 @@ void printLines(const string &text, int lineDelayMs = 600) {
     }
 }
 
-// Choice reader
-int readChoice() {
+// Wait for Enter key press
+void waitForEnter(const string &prompt = "\n[Press Enter to continue...]") {
+    cout << prompt << flush;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+}
+
+// Enhanced choice reader with range validation
+int readChoice(int min = 1, int max = 3) {
     int choice;
     while (true) {
-        if (cin >> choice) return choice;
+        if (cin >> choice && choice >= min && choice <= max) {
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            return choice;
+        }
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Please enter a valid number: ";
+        cout << "Invalid choice. Please enter " << min << "-" << max << ": ";
     }
 }
 
-/* ---------- Scene 3: Bar Flambae ---------- */
+/* ---------- Scene 4: Bar Flambae ---------- */
 void scene_bar_flambae() {
     int choice;
 
-    cout << "\n===== Scene 3: Bar Flambae =====\n\n";
+    // Wait for player to start the scene
+    waitForEnter("\n[Press Enter to begin Scene 4...]");
+    
+    cout << "\n=========================================\n";
+    cout << "     SCENE 4: THE SUPERHERO BAR\n";
+    cout << "=========================================\n\n";
 
-    printLines("*A glass shatters nearby*  (╯°□°）╯︵ ┻━┻");
+    printLines("*CRASH! A glass shatters nearby*  (╯°□°）╯︵ ┻━┻");
+    this_thread::sleep_for(chrono::milliseconds(500));
+    
     printWords("Mecha Man: What're you doing?");
     printWords("Person: Hey! Bitch!..... Hey! I'm talkin' to you, bitch!");
     printWords("Mecha Man: Alright, just so you know, I only turned around cause someone yelled, not because I'm a bitch or anything.");
@@ -60,11 +77,15 @@ void scene_bar_flambae() {
     printWords("Yeah, it's coming back to me...");
 
     // Character identity choice
-    cout << "\n1. Dr. Don't Do Shit";
-    cout << "\n2. Mr. Wet Ponytail";
-    cout << "\n3. Sunglasses at Night Guy";
-    cout << "\nChoice: ";
-    choice = readChoice();
+    cout << "\n+---------------------------------------+\n";
+    cout << "|  Choose Your Insult:                  |\n";
+    cout << "+---------------------------------------+\n";
+    cout << "|  1. Dr. Don't Do Shit                 |\n";
+    cout << "|  2. Mr. Wet Ponytail                  |\n";
+    cout << "|  3. Sunglasses at Night Guy           |\n";
+    cout << "+---------------------------------------+\n";
+    cout << "Choice: ";
+    choice = readChoice(1, 3);
 
     printWords("Oh wait, I know it.");
 
@@ -72,26 +93,27 @@ void scene_bar_flambae() {
         printWords("You are Dr. Don't Do Shit.");
         printWords("Your deal is you walk up to people, look threatening, talk a big game, then don't do shit about it.");
         printWords("Also, you're not a real doctor cause you're a fuckin' idiot.");
-        impressionScore -= 1;  // bad impression
+        impressionScore += 1;  // Witty comeback
+        publicChaos += 1;      // Causing a scene
     }
     else if (choice == 2) {
         printWords("You are Mr. Wet Ponytail.");
         printWords("Your superpower is in your ponytail, which aside from being disgusting, has the ability to never not be wet.");
         printWords("In battle, you whip it around and anyone it touches fuckin' kills themself.");
-        impressionScore -= 2;  // worse impression
+        impressionScore += 2;  // Most creative/disgusting
+        publicChaos += 2;      // People are grossed out
     }
     else if (choice == 3) {
         printWords("You are Sunglasses Indoors at Night Guy.");
         printWords("Your superpower is letting everyone know in the room that you're a douchebag.");
         printWords("Cause you should literally never do that.");
-        impressionScore -= 1;
-    }
-    else {
-        printWords("Mecha Man: ...Yeah, I lost it.");
-        impressionScore -= 1;
+        impressionScore += 1;  // Solid burn
+        publicChaos += 1;
     }
     
-    printLines("*Someone chuckles*");
+    printLines("*Scattered laughter around the bar*");
+    printLines("*Someone in the corner chokes on their drink*");
+    
     printWords("Person: You good?");
     printWords("Woman: Sorry, I choked on my spit.");
     printWords("Person: No, Mecha Bitch. I control the fire--");
@@ -109,60 +131,140 @@ void scene_bar_flambae() {
     printWords("And you are not Mecha Man anymore.");
     printWords("So you need to get the fuck out of here.");
 
-    // Water or Alcohol choice
-    cout << "\n1. Water";
-    cout << "\n2. Alcohol";
-    cout << "\nChoice: ";
-    choice = readChoice();
+    printLines("\n*Flambae's body ignites with flames*  🔥");
+    this_thread::sleep_for(chrono::milliseconds(800));
+
+    // Water or Alcohol choice - THE CRITICAL DECISION
+    cout << "\n+---------------------------------------+\n";
+    cout << "|  What do you throw?                   |\n";
+    cout << "+---------------------------------------+\n";
+    cout << "|  1. Water (Efficient)                 |\n";
+    cout << "|  2. Alcohol (Memorable)               |\n";
+    cout << "+---------------------------------------+\n";
+    cout << "Choice: ";
+    choice = readChoice(1, 2);
 
     if (choice == 1) {
-        printLines("*You throw water on Flambae*  (っ・ω・)っ💧");
+        // WATER - Efficient but unremarkable
+        printLines("\n*You grab a glass of water and throw it*  (っ・ω・)っ💧");
+        printLines("*SSSSSSS - Steam rises as the flames extinguish*");
+        
         printWords("Mecha Man: There. The easy way.");
         printWords("Flambae: I've been waiting a long time for this.");
-        printLines("*Flambae charges, slips, and knocks himself out*  (x_x)");
-        printLines("*Coupe and Punch-up runoff to get him*");
+        printLines("*Flambae charges forward, slips on the wet floor*");
+        printLines("*THUD*  (x_x)");
+        printWords("Flambae: ...ow.");
+        
+        printLines("*Coupe and Punch-up rush over to help*");
         printWords("Dobble: Hey, why don't you do us a favor and step out of this bar.");        
         printWords("Mecha Man: I get it. Can you just tell Blazer I'm outside?");
-        printLines("*Dopple duplicates*");
-        printWords("Dopple: OUT!.");
+        printLines("*Dopple duplicates himself, blocking the door*");
+        printWords("Dopple: OUT!");
         printWords("Mecha Man: Relax! I'm leaving.");
-        publicChaos += 1;  // minor chaos
-        impressionScore += 1; // Flambae slightly impressed by efficiency
-    }
-    else if (choice == 2) {
-        printLines("*You throw alcohol on Flambae*  (っ🔥)っ🥃\n*The flames burn Flambae as he screams*  (🔥🔥🔥)");
-        printWords("Mecha Man: Sorry, which way was that.");
-        printLines("*A man hurries to grab a tray*");
-        printWords("Waiter: Hey!.");
-        printWords("Coupe: No, Punch-up, you are literally fanning the flames right now.");
-        printWords("Punch-up: Shit, you're right. Anybody got a rug?");
-        printWords("Flambae: Fuck!");
-        printLines("*Flambae rushes out of the bar screaming*");
-        printWords("Punch-up: You gotta drop and roll, lad");
-        printWords("Mecha Man: I thought he doesn't burn");
+        
+        publicChaos += 1;       // Minor scene
+        impressionScore += 2;   // Competent and efficient
+        
+        printLines("\n*Blonde Blazer watches from across the room*");
+        printWords("Blonde Blazer (thinking): Well... that was sensible.");
+        printWords("Blonde Blazer (thinking): Boring, but sensible.");
+        
+        cout << "\n[Blonde Blazer noticed your tactical efficiency]\n";
+        
+    } else if (choice == 2) {
+        // ALCOHOL - Dramatic and unforgettable (PROJECT REQUIREMENT: Higher impression!)
+        printLines("\n*You grab a bottle of alcohol and throw it*  (っ🔥)っ🥃");
+        this_thread::sleep_for(chrono::milliseconds(500));
+        printLines("*WHOOOOOOSH!*");
+        printLines("*The flames EXPLODE upward in a massive fireball*  🔥🔥🔥");
+        
+        printWords("Flambae: AAAHHHHHHH!");
+        printWords("Mecha Man: Sorry, which way was that?");
+        
+        printLines("*A waiter hurries over with a tray*");
+        printWords("Waiter: HEY! What the hell?!");
+        printWords("Coupe: No, Punch-up, you are literally fanning the flames right now!");
+        printWords("Punch-up: Shit, you're right! Anybody got a rug?");
+        printWords("Flambae: FUCK! FUCK! IT BURNS!");
+        
+        printLines("*Flambae runs around in circles, hair ablaze*");
+        printLines("*CRASH* *He knocks over three tables*");
+        printLines("*Flambae finally rushes out the door, still screaming*");
+        
+        printWords("Punch-up: You gotta drop and roll, lad!");
+        printWords("Mecha Man: I thought he doesn't burn?");
         printWords("Coupe: Some people become scared before they even know they're hurt...");
-        printWords("Coupe: like babies.");
-        printLines("*Coupe walks out*");
-        printWords("Dopple: HEY! Mecha Dick. Get the fuck out of here.");
+        printWords("Coupe: ...like babies.");
+        printLines("*Coupe shakes his head and walks out after Flambae*");
+        
+        this_thread::sleep_for(chrono::milliseconds(1000));
+        printLines("*Awkward silence fills the bar*");
+        
+        printWords("Dopple: HEY! Mecha Dick. Get the FUCK out of here. NOW.");
         printWords("Mecha Man: I get it. Can you just tell Blazer I'm outside?");
-        printLines("*Dopple duplicates*");
-        printWords("Dopple: OUT!.");
+        printLines("*Dopple duplicates himself, both copies glaring*");
+        printWords("Dopple: OUT!");
         printWords("Mecha Man: Relax! I'm leaving.");
-        publicChaos += 3;  // major chaos
-        impressionScore -= 1; // Flambae slightly annoyed
-    }
-    else {
-        printWords("Mecha Man: Yeah... bad call.");
+        
+        publicChaos += 3;       // MAJOR chaos
+        impressionScore += 5;   // MEMORABLE - PROJECT REQUIREMENT!
+        
+        printLines("\n*Blonde Blazer is wide-eyed, hand covering her mouth*");
+        this_thread::sleep_for(chrono::milliseconds(800));
+        printWords("Blonde Blazer (thinking): Holy shit.");
+        printWords("Blonde Blazer (thinking): That was... I mean, terrible, but...");
+        printWords("Blonde Blazer (thinking): I cannot believe he just did that.");
+        printLines("*She's fighting back a smile*");
+        printWords("Blonde Blazer (thinking): ...I will never forget this moment.");
+        
+        cout << "\n[★★★ UNFORGETTABLE IMPRESSION - Blonde Blazer will remember this ★★★]\n";
     }
 
-    // Show score at end
-    cout << "\n===== End of Scene 3 =====\n";
-    cout << "Current Impression Score: " << impressionScore << endl;
-    cout << "Current Public Chaos: " << publicChaos << endl;
+    // End scene summary
+    cout << "\n=========================================\n";
+    cout << "         End of Scene 4\n";
+    cout << "=========================================\n";
+    
+    // Show status with context
+    cout << "\n+======================================+\n";
+    cout << "|      REPUTATION UPDATE               |\n";
+    cout << "+======================================+\n";
+    
+    if (impressionScore >= 6) {
+        cout << "|  Blazer's Memory: VIVID ***          |\n";
+    } else if (impressionScore >= 3) {
+        cout << "|  Blazer's Memory: Notable **         |\n";
+    } else {
+        cout << "|  Blazer's Memory: Forgettable *      |\n";
+    }
+    
+    if (publicChaos >= 3) {
+        cout << "|  Bar Status: TOTAL CHAOS (!)         |\n";
+    } else if (publicChaos >= 2) {
+        cout << "|  Bar Status: Disrupted (!)           |\n";
+    } else {
+        cout << "|  Bar Status: Under Control (OK)      |\n";
+    }
+    
+    cout << "|                                      |\n";
+    cout << "|  Impression Score: " << impressionScore << "/10    |\n";
+    cout << "|  Chaos Level: " << publicChaos << "/10         |\n";
+    cout << "+======================================+\n\n";
 }
 
 /* ---------- Standalone Main ---------- */
 int main() {
+    cout << "\n";
+    cout << "+==========================================+\n";
+    cout << "|                                          |\n";
+    cout << "|        DISPATCH: Robert's Story          |\n";
+    cout << "|         Scene 4 - Bar Test               |\n";
+    cout << "|                                          |\n";
+    cout << "+==========================================+\n";
+    
     scene_bar_flambae();
+    
+    cout << "\n[Press Enter to Exit]";
+    cin.get();
     return 0;
 }
