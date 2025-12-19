@@ -33,6 +33,27 @@ void scene_billboard() {
 
     cout << "\n===== Scene 4: Billboard =====\n\n";
 
+    typeLine("*Mecha Man flys to the alleyway*");    
+    typeLine("*Blonde Blazer walks out the bar*");
+    typeWords("Blonde Blazer: Hey, I couldn't find you.");
+    typeWords("Mecha Man: Uh, it's cool, I was just admiring the art on this dumpster.");
+    typeWords(" Can't tell why anyone would put those words together.");    
+    typeLine("*Shows a dumpster with 'FART BART' plastered on it*");
+    typeWords("Mecha Man: Why're you holding two drinks?.");
+    typeWords("Blonde Blazer: Nightcap?");
+    typeWords("Mecha Man: You're trouble.");
+    typeWords("Blonde Blazer: Actually, according to the bartender, that's exactly what you are.");
+    typeWords("What happened in there? 
+    typeWords("I walk out and the bartender's pissed.");
+    typeWords("The whole energy is awkward...");
+    typeWords("... And why did it smell like burnt hair?.");
+    typeWords("Mecha Man: I got a little fired up with the guy.");
+    typeWords("But he ran off before anything happened.");
+    typeWords("Blonde Blazer: Oh, you got fired up?"); 
+    typeWords("Mecha Man: Yeah. Does that not sound convincing enough?.");
+    typeWords("Blonde Blazer: Hold these. I know a place.);
+    typeWords("It's a little out there. Easier if we fly..");
+
     typeLine("*Mecha Man and Blonde Blazer land on the billboard*  (ง•̀_•́)ง");
     typeLine("*City lights glow beneath them*  ✨🏙️");
 
@@ -93,17 +114,23 @@ void scene_billboard() {
     typeWords("He died in the suit before I was born.");
     typeWords("Dad was killed fighting Shroud.");
     typeWords("That's when I took over.");
+    typeWords("There was a little inheritance and the life insurance money.");
 
     typeWords("Blonde Blazer: I'm so sorry. I didn't realize.");
     typeWords("Robert: Just your run of the mill sad superhero origin story.");
     typeWords("The family tradition is dying in that suit.");
     typeWords("Which I guess I don't have to worry about anymore.");
 
+    typeWords("Mecha Man: What is it?");
     typeWords("Blonde Blazer: I'm not quite drunk enough to share my origin story just yet.");
-    typeWords("But remind me someday.");
+    typeWords("But... remind me to tell you someday.");
     typeWords("Robert: Definitely.");
 
-    typeLine("*Blonde Blazer gently touches Robert’s face*  (〃ω〃)");
+    typeLine("*Blonde Blazer sits close to Robert*");
+    typeLine("*She gently touches Robert’s face*  (〃ω〃)");
+    typeLine("*Blonde Blazer removes his mask*  ( ﾉ ﾟｰﾟ)ﾉ");
+    typeLine("*She looks intently into his eyes* (*≧︶≦))(￣▽￣* )ゞ");
+    typeWords("Blonde Blazer: We can work with this.");
 
     cout << "\n1. Kiss her";
     cout << "\n2. Let the moment pass";
@@ -129,10 +156,36 @@ void scene_billboard() {
     typeWords("Robert: I'm so sorry, I totally misread that--");
     typeWords("Blonde Blazer: You didn't.");
     typeWords("I mean, you did, but...");
-    typeWords("The way I went about tonight was a little unprofessional.");
+    typeWords("The way I went about tonight... it was all a little loose");
+    typeWords("A little unprofessional...");
 
     typeWords("Robert: Unprofessional?");
     typeWords("I'm not sure that applies but... okay.");
+
+    typeWords("Blonde Blazer: I'm actually here on official business... how I know your name, the proposition I
+mentioned right before you spit in my mouth--");
+    typeWords("Robert: Still mortified about that.");
+    typeWords("Blonde Blazer: It's fine.");
+    typeWords("Do you remember a superhero named Trackstar?");
+    typeWords("Robert: Remember? Of course. He's like family that I haven't talked to in a while.");
+    typeWords("What about him?");
+    typeWords("Blonde Blazer: I work with him at SDN.");
+    typeWords("He recommended you. Mentioned that he worked with your father.");
+    typeWords("Robert: Yeah, he was the youngest member of the Brave Brigade, so he was kind of my babysitter for a while.");
+    typeWords("How's he doing?");
+    typeWords("Blonde Blazer: He's doing great. He's why I'm here.");
+    typeWords("Blonde Blazer: Robert, I would like to make you an offer. 
+    typeWords("Blonde Blazer: In exchange for dispatching and mentoring some of our rookie heroes, SDN can make you Mecca Man again.");
+    typeWords("Blonde Blazer: But this time with all the resources that a company as big as ours has at their disposal.");
+    typeWords("Blonde Blazer: No more paying out of pocket for repairs, support staff, the whole shebang.");
+
+    typeWords("Robert: My suit was totally destroyed...);
+    typeWords("Blonde Blazer: I saw the report, studied the footage.");
+    typeWords("Blonde Blazer: It's not totally destroyed, just mostly.");
+    typeWords("Blonde Blazer: It's a big investment. It'll take considerable time and money to get the suit repaired and the missing pieces replaced.");
+    typeWords("Blonde Blazer: Plenty of time to learn how to dispatch and level up some of the heroes on our roster.");
+    typeWords("Blonde Blazer: Your experience, your work ethic, your perspective, it's all invaluable.");
+    typeWords("Blonde Blazer: Share it, Robert. You have a lot left to give.");
 
     cout << "\n===== End of Scene 4 =====\n";
 }
