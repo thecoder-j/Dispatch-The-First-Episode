@@ -1,5 +1,4 @@
 # Dispatch Decision Engine - Robert's Story
-
 **A C++ Text-Based Visual Novel**
 
 ---
@@ -546,6 +545,4 @@ This project is created for educational purposes as part of a C++ programming co
 
 ---
 
----
-
-**End of Documentation**
+**DONEZOOO IT'S CHRISTMASTIME 🤑**
