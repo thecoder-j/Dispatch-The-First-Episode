@@ -28,31 +28,31 @@ void typeLine(string text, int delay = 200000) {
 }
 
 /* ---------- Scene 4 ---------- */
-void scene_billboard() {
+void scene_billboard(int &impressionScore, int &publicChaos) {
     int choice;
 
     cout << "\n===== Scene 4: Billboard =====\n\n";
 
-    typeLine("*Mecha Man flys to the alleyway*");    
-    typeLine("*Blonde Blazer walks out the bar*");
+    typeLine("*Mecha Man flies to the alleyway*");    
+    typeLine("*Blonde Blazer walks out of the bar*");
     typeWords("Blonde Blazer: Hey, I couldn't find you.");
     typeWords("Mecha Man: Uh, it's cool, I was just admiring the art on this dumpster.");
-    typeWords(" Can't tell why anyone would put those words together.");    
+    typeWords("Can't tell why anyone would put those words together.");    
     typeLine("*Shows a dumpster with 'FART BART' plastered on it*");
-    typeWords("Mecha Man: Why're you holding two drinks?.");
+    typeWords("Mecha Man: Why're you holding two drinks?");
     typeWords("Blonde Blazer: Nightcap?");
     typeWords("Mecha Man: You're trouble.");
     typeWords("Blonde Blazer: Actually, according to the bartender, that's exactly what you are.");
-    typeWords("What happened in there? 
+    typeWords("What happened in there?");
     typeWords("I walk out and the bartender's pissed.");
     typeWords("The whole energy is awkward...");
-    typeWords("... And why did it smell like burnt hair?.");
+    typeWords("...And why did it smell like burnt hair?");
     typeWords("Mecha Man: I got a little fired up with the guy.");
     typeWords("But he ran off before anything happened.");
-    typeWords("Blonde Blazer: Oh, you got fired up?"); 
-    typeWords("Mecha Man: Yeah. Does that not sound convincing enough?.");
-    typeWords("Blonde Blazer: Hold these. I know a place.);
-    typeWords("It's a little out there. Easier if we fly..");
+    typeWords("Blonde Blazer: Oh, you got fired up?");
+    typeWords("Mecha Man: Yeah. Does that not sound convincing enough?");
+    typeWords("Blonde Blazer: Hold these. I know a place.");
+    typeWords("It's a little out there. Easier if we fly...");
 
     typeLine("*Mecha Man and Blonde Blazer land on the billboard*  (ง•̀_•́)ง");
     typeLine("*City lights glow beneath them*  ✨🏙️");
@@ -68,28 +68,33 @@ void scene_billboard() {
     cout << "\nChoice: ";
     cin >> choice;
 
-    if (choice == 1) {
-        typeWords("Robert: All this has been pretty overwhelming, you know.");
-        typeWords("I don't get out often, and I think I really needed this.");
-        typeWords("So thank you. For bringing me out.");
-        typeWords("I had a really great time.");
-    }
-    else if (choice == 2) {
-        typeWords("Robert: I really appreciate you coming to my rescue back there.");
-        typeWords("I still think I could've handled it, but...");
-        typeWords("Thanks. I should've just said that.");
-        typeWords("But yep. I'm still talking.");
-    }
-    else if (choice == 3) {
-        typeWords("Robert: I know I shouldn't bring it up.");
-        typeWords("But I am seriously sorry about the whole spitting thing.");
-        typeWords("Blonde Blazer: Yeah, that's usually like a second date kinda thing with me.");
-        typeWords("I'm joking. I'm joking.");
-        typeWords("This is not a date.");
-        typeWords("Robert: No. Totally. Yeah.");
-    }
-    else {
-        typeWords("Robert: Yeah... ignore that.");
+    switch(choice) {
+        case 1:
+            typeWords("Robert: All this has been pretty overwhelming, you know.");
+            typeWords("I don't get out often, and I think I really needed this.");
+            typeWords("So thank you. For bringing me out.");
+            typeWords("I had a really great time.");
+            impressionScore += 5;
+            break;
+        case 2:
+            typeWords("Robert: I really appreciate you coming to my rescue back there.");
+            typeWords("I still think I could've handled it, but...");
+            typeWords("Thanks. I should've just said that.");
+            typeWords("But yep. I'm still talking.");
+            impressionScore += 3;
+            break;
+        case 3:
+            typeWords("Robert: I know I shouldn't bring it up.");
+            typeWords("But I am seriously sorry about the whole spitting thing.");
+            typeWords("Blonde Blazer: Yeah, that's usually like a second date kinda thing with me.");
+            typeWords("I'm joking. I'm joking.");
+            typeWords("This is not a date.");
+            typeWords("Robert: No. Totally. Yeah.");
+            impressionScore -= 2;
+            break;
+        default:
+            typeWords("Robert: Yeah... ignore that.");
+            break;
     }
 
     typeWords("Blonde Blazer: Don't you worry about it, Robert Roberson.");
@@ -137,18 +142,22 @@ void scene_billboard() {
     cout << "\nChoice: ";
     cin >> choice;
 
-    if (choice == 1) {
-        typeLine("*You lean in and kiss her*  ( ˘ ³˘)♥");
-        typeWords("Blonde Blazer: No.");
-        typeWords("This... I'm sorry if I gave the wrong impression.");
-    }
-    else if (choice == 2) {
-        typeLine("*You hesitate and pull back*  (•_•)");
-        typeWords("Blonde Blazer: Sorry.");
-        typeWords("I'm actually here with a purpose.");
-    }
-    else {
-        typeWords("Robert: Uh... yeah.");
+    switch(choice) {
+        case 1:
+            typeLine("*You lean in and kiss her*  ( ˘ ³˘)♥");
+            typeWords("Blonde Blazer: No.");
+            typeWords("This... I'm sorry if I gave the wrong impression.");
+            publicChaos += 1;
+            break;
+        case 2:
+            typeLine("*You hesitate and pull back*  (•_•)");
+            typeWords("Blonde Blazer: Sorry.");
+            typeWords("I'm actually here with a purpose.");
+            publicChaos -= 1;
+            break;
+        default:
+            typeWords("Robert: Uh... yeah.");
+            break;
     }
 
     typeWords("Robert: Oh no.");
@@ -162,8 +171,8 @@ void scene_billboard() {
     typeWords("Robert: Unprofessional?");
     typeWords("I'm not sure that applies but... okay.");
 
-    typeWords("Blonde Blazer: I'm actually here on official business... how I know your name, the proposition I
-mentioned right before you spit in my mouth--");
+    typeWords("Blonde Blazer: I'm actually here on official business...");
+    typeWords("... how I know your name, the proposition I mentioned right before you spit in my mouth--");
     typeWords("Robert: Still mortified about that.");
     typeWords("Blonde Blazer: It's fine.");
     typeWords("Do you remember a superhero named Trackstar?");
@@ -174,12 +183,12 @@ mentioned right before you spit in my mouth--");
     typeWords("Robert: Yeah, he was the youngest member of the Brave Brigade, so he was kind of my babysitter for a while.");
     typeWords("How's he doing?");
     typeWords("Blonde Blazer: He's doing great. He's why I'm here.");
-    typeWords("Blonde Blazer: Robert, I would like to make you an offer. 
-    typeWords("Blonde Blazer: In exchange for dispatching and mentoring some of our rookie heroes, SDN can make you Mecca Man again.");
+    typeWords("Blonde Blazer: Robert, I would like to make you an offer.");
+    typeWords("Blonde Blazer: In exchange for dispatching and mentoring some of our rookie heroes, SDN can make you Mecha Man again.");
     typeWords("Blonde Blazer: But this time with all the resources that a company as big as ours has at their disposal.");
     typeWords("Blonde Blazer: No more paying out of pocket for repairs, support staff, the whole shebang.");
 
-    typeWords("Robert: My suit was totally destroyed...);
+    typeWords("Robert: My suit was totally destroyed...");
     typeWords("Blonde Blazer: I saw the report, studied the footage.");
     typeWords("Blonde Blazer: It's not totally destroyed, just mostly.");
     typeWords("Blonde Blazer: It's a big investment. It'll take considerable time and money to get the suit repaired and the missing pieces replaced.");
@@ -192,6 +201,13 @@ mentioned right before you spit in my mouth--");
 
 /* ---------- Standalone Main ---------- */
 int main() {
-    scene_billboard();
+    int impressionScore = 0;
+    int publicChaos = 0;
+
+    scene_billboard(impressionScore, publicChaos);
+
+    cout << "\nImpression Score: " << impressionScore << endl;
+    cout << "Public Chaos: " << publicChaos << endl;
+
     return 0;
 }
