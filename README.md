@@ -6,7 +6,7 @@
 
 ## ( ﾉ ﾟｰﾟ)ﾉ Project Overview
 
-*Jamie, here!* This project was crafted by 3 novices in coding Lee, Rodge, and of course, the writer of this README, Jamie (´▽`ʃ♡ƪ). It was difficult to start but, with the help of Youtube tutorials, countless revisions, and the fear of failing this subject, we came up with the final output that we can be proud of.
+*Jamie, here!* This project was crafted by 3 novices in coding: Lee, Rodge, and of course, the writer of this README, Jamie (´▽`ʃ♡ƪ). It was difficult to start but, with the help of Youtube tutorials, countless revisions, and the fear of failing this subject, we came up with the final output that we can be proud of.
 
 This a text-based visual novel inspired by *Dispatch*, featuring the character Robert as he navigates the critical moment of transitioning from active superhero to dispatcher. The program implements branching narrative paths where player choices determine character relationships, moral alignment, and story outcomes.
 
