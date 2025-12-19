@@ -79,7 +79,8 @@ void scene_bar_flambae() {
     }
 
     typeWords("Flambae: You good?");
-    typeWords("Person: Sorry, I choked on my spit.");
+    typeLine("*Someone chuckles*");
+    typeWords("Woman: Sorry, I choked on my spit.");
     typeWords("No, Mecha Bitch. I control the fire--");
 
     typeWords("Mecha Man: The fire?");
@@ -108,8 +109,18 @@ void scene_bar_flambae() {
     }
     else if (choice == 2) {
         typeLine("*You throw alcohol on Flambae*  (っ🔥)っ🥃");
-        typeLine("*The flames explode upward*  (🔥🔥🔥)");
-        typeWords("Flambae: OH YOU FUCKED UP.");
+        typeLine("*The flames burn Flambae as he screams*  (🔥🔥🔥)");
+        typeWords("Mecha Man: Sorry, which way was that.");
+        typeLine("*A man hurries to grab a tray*");
+        typeWords("Waiter: Hey!.");
+        typeWords("Coupe: No, Punch-up, you are literally fanning the flames right now.");
+        typeWords("Punch-up: Shit, you're right. Anybody got a rug?");
+        typeWords("Flambae: Fuck!");
+        typeLine("*Flambae rushes out of the bar screaming*");
+        typeWords("Punch-up: You gotta drop and roll, lad");
+        typeWords("Mecha Man: I thought he doesn't burn");
+        typeWords("Coupe: Some people become scared before they even know they're hurt...");
+        typeWords("Coupe: like babies.");
     }
     else {
         typeWords("Mecha Man: Yeah... bad call.");
