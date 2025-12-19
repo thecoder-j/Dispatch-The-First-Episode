@@ -4,11 +4,9 @@
 #include <sstream>
 using namespace std;
 
-int impressionScore = 0;
-int publicChaos = 0;
-
-// Word-by-word printing for dialogue
-void printWords(const string &text, int wordDelayMs = 150) {
+// ---------- Typing Effects ----------
+// Word-by-word for dialogue
+void printWords(const string &text, int wordDelayMs = 120) {
     stringstream ss(text);
     string word;
     while (ss >> word) {
@@ -18,8 +16,8 @@ void printWords(const string &text, int wordDelayMs = 150) {
     cout << endl;
 }
 
-// Line-by-line printing for actions
-void printLines(const string &text, int lineDelayMs = 600) {
+// Line-by-line for actions
+void printLines(const string &text, int lineDelayMs = 500) {
     stringstream ss(text);
     string line;
     while (getline(ss, line, '\n')) {
@@ -28,7 +26,7 @@ void printLines(const string &text, int lineDelayMs = 600) {
     }
 }
 
-// Choice reader
+// Simple choice reader
 int readChoice() {
     int choice;
     while (true) {
@@ -39,130 +37,146 @@ int readChoice() {
     }
 }
 
-/* ---------- Scene 3: Bar Flambae ---------- */
-void scene_bar_flambae() {
+// ---------- Scene 4: Billboard ----------
+void scene_billboard(int &relationshipScore, int &publicChaos) {
     int choice;
 
-    cout << "\n===== Scene 3: Bar Flambae =====\n\n";
+    cout << "\n===== Scene 4: Billboard =====\n\n";
 
-    printLines("*A glass shatters nearby*  (╯°□°）╯︵ ┻━┻");
-    printWords("Mecha Man: What're you doing?");
-    printWords("Person: Hey! Bitch!..... Hey! I'm talkin' to you, bitch!");
-    printWords("Mecha Man: Alright, just so you know, I only turned around cause someone yelled, not because I'm a bitch or anything.");
+    // Actions
+    printLines("*Mecha Man flies to the alleyway*");
+    printLines("*Blonde Blazer walks out the bar*");
 
-    printWords("Person: Don't you watch the news? This is a superhero bar.");
-    printWords("Mecha Man: Oh, wow, are you a superhero? That's so cool.");
-    printWords("Is this your power?");
-    printWords("You're like, tell people obvious shit guy?");
+    // Dialogue
+    printWords("Blonde Blazer: Hey, I couldn't find you.");
+    printWords("Mecha Man: Uh, it's cool. I was just admiring the art on this dumpster.");
+    printWords("Can't tell why anyone would put those words together.");
+    printLines("*Shows a dumpster with 'FART BART' plastered on it*");
 
-    printWords("Person: You're really gonna act like you don't remember me?");
-    printWords("Mecha Man: Wait, it's coming back to me...");
-    printWords("Yeah, it's coming back to me...");
+    printWords("Mecha Man: Why're you holding two drinks?");
+    printWords("Blonde Blazer: Nightcap?");
+    printWords("Mecha Man: You're trouble.");
+    printWords("Blonde Blazer: Actually, according to the bartender, that's exactly what you are.");
 
-    // Character identity choice
-    cout << "\n1. Dr. Don't Do Shit";
-    cout << "\n2. Mr. Wet Ponytail";
-    cout << "\n3. Sunglasses at Night Guy";
-    cout << "\nChoice: ";
-    choice = readChoice();
+    printWords("Blonde Blazer: What happened in there?");
+    printWords("Blonde Blazer: I walk out and the bartender's pissed. The whole energy is awkward...");
+    printWords("...And why did it smell like burnt hair?");
 
-    printWords("Oh wait, I know it.");
+    printWords("Mecha Man: I got a little fired up with the guy, but he ran off before anything happened.");
+    printWords("Blonde Blazer: Oh, you got fired up?");
+    printWords("Mecha Man: Yeah. Does that not sound convincing enough?");
+    printWords("Blonde Blazer: Hold these. I know a place. It's a little out there. Easier if we fly.");
 
-    if (choice == 1) {
-        printWords("You are Dr. Don't Do Shit.");
-        printWords("Your deal is you walk up to people, look threatening, talk a big game, then don't do shit about it.");
-        printWords("Also, you're not a real doctor cause you're a fuckin' idiot.");
-        impressionScore -= 1;  // bad impression
-    }
-    else if (choice == 2) {
-        printWords("You are Mr. Wet Ponytail.");
-        printWords("Your superpower is in your ponytail, which aside from being disgusting, has the ability to never not be wet.");
-        printWords("In battle, you whip it around and anyone it touches fuckin' kills themself.");
-        impressionScore -= 2;  // worse impression
-    }
-    else if (choice == 3) {
-        printWords("You are Sunglasses Indoors at Night Guy.");
-        printWords("Your superpower is letting everyone know in the room that you're a douchebag.");
-        printWords("Cause you should literally never do that.");
-        impressionScore -= 1;
-    }
-    else {
-        printWords("Mecha Man: ...Yeah, I lost it.");
-        impressionScore -= 1;
-    }
-    
-    printLines("*Someone chuckles*");
-    printWords("Person: You good?");
-    printWords("Woman: Sorry, I choked on my spit.");
-    printWords("Person: No, Mecha Bitch. I control the fire--");
+    printLines("*Mecha Man and Blonde Blazer land on the billboard*  (ง•̀_•́)ง");
+    printLines("*City lights glow beneath them*  ✨🏙️");
 
-    printWords("Mecha Man: The fire?");
-    printWords("Person: And the flame.");
-    printWords("And my skin does not burn.");
-    printWords("I am Flambae.");
+    printWords("Robert: I actually thought you were taking us to sit on it.");
+    printWords("Blonde Blazer: Hmm! Oh yeah, that woulda been cool. But no, this is better 'cause you can see it.");
+    printWords("And it looks like there's a couple up there already.");
 
-    printWords("Mecha Man: Wait, oh shit. I do remember you.");
-    printWords("You're that shitty villain I busted up.");
-
-    printWords("Flambae: Not anymore, Mecha Dick.");
-    printWords("As I literally just said, I am Flambae, a real superhero.");
-    printWords("And you are not Mecha Man anymore.");
-    printWords("So you need to get the fuck out of here.");
-
-    // Water or Alcohol choice
-    cout << "\n1. Water";
-    cout << "\n2. Alcohol";
-    cout << "\nChoice: ";
+    // Player choice
+    cout << "\n1. I really needed this.\n2. Thanks for helping me.\n3. Sorry about the spit thing.\nChoice: ";
     choice = readChoice();
 
     if (choice == 1) {
-        printLines("*You throw water on Flambae*  (っ・ω・)っ💧");
-        printWords("Mecha Man: There. The easy way.");
-        printWords("Flambae: I've been waiting a long time for this.");
-        printLines("*Flambae charges, slips, and knocks himself out*  (x_x)");
-        printLines("*Coupe and Punch-up runoff to get him*");
-        printWords("Dobble: Hey, why don't you do us a favor and step out of this bar.");        
-        printWords("Mecha Man: I get it. Can you just tell Blazer I'm outside?");
-        printLines("*Dopple duplicates*");
-        printWords("Dopple: OUT!.");
-        printWords("Mecha Man: Relax! I'm leaving.");
-        publicChaos += 1;  // minor chaos
-        impressionScore += 1; // Flambae slightly impressed by efficiency
-    }
-    else if (choice == 2) {
-        printLines("*You throw alcohol on Flambae*  (っ🔥)っ🥃\n*The flames burn Flambae as he screams*  (🔥🔥🔥)");
-        printWords("Mecha Man: Sorry, which way was that.");
-        printLines("*A man hurries to grab a tray*");
-        printWords("Waiter: Hey!.");
-        printWords("Coupe: No, Punch-up, you are literally fanning the flames right now.");
-        printWords("Punch-up: Shit, you're right. Anybody got a rug?");
-        printWords("Flambae: Fuck!");
-        printLines("*Flambae rushes out of the bar screaming*");
-        printWords("Punch-up: You gotta drop and roll, lad");
-        printWords("Mecha Man: I thought he doesn't burn");
-        printWords("Coupe: Some people become scared before they even know they're hurt...");
-        printWords("Coupe: like babies.");
-        printLines("*Coupe walks out*");
-        printWords("Dopple: HEY! Mecha Dick. Get the fuck out of here.");
-        printWords("Mecha Man: I get it. Can you just tell Blazer I'm outside?");
-        printLines("*Dopple duplicates*");
-        printWords("Dopple: OUT!.");
-        printWords("Mecha Man: Relax! I'm leaving.");
-        publicChaos += 3;  // major chaos
-        impressionScore -= 1; // Flambae slightly annoyed
-    }
-    else {
-        printWords("Mecha Man: Yeah... bad call.");
+        printWords("Robert: All this has been pretty overwhelming, you know.");
+        printWords("I don't get out often, and I think I really needed this.");
+        printWords("So thank you. For bringing me out. I had a really great time.");
+        relationshipScore += 2; // good bonding
+    } else if (choice == 2) {
+        printWords("Robert: I really appreciate you coming to my rescue back there.");
+        printWords("I still think I could've handled it, but... Thanks. I should've just said that.");
+        printWords("But yep. I'm still talking.");
+        relationshipScore += 1; // moderate bonding
+    } else if (choice == 3) {
+        printWords("Robert: I know I shouldn't bring it up, but I am seriously sorry about the whole spitting thing.");
+        printWords("Blonde Blazer: Yeah, usually like a second date kinda thing with me. I'm joking. Not a date.");
+        printWords("Robert: No. Totally. Yeah.");
+        relationshipScore += 0; // neutral
+    } else {
+        printWords("Robert: Yeah... ignore that.");
     }
 
-    // Show score at end
-    cout << "\n===== End of Scene 3 =====\n";
-    cout << "Current Impression Score: " << impressionScore << endl;
-    cout << "Current Public Chaos: " << publicChaos << endl;
+    printWords("Blonde Blazer: Don't worry about it, Robert Roberson.");
+    printWords("Robert: How do you know my name?");
+    printWords("Blonde Blazer: Whoops!");
+    printWords("Robert: What's going on?");
+    printWords("Blonde Blazer: Okay, I'll tell you. But only after you tell me how you ended up with a name like that.");
+
+    printWords("Robert: Oh, you mean Robert Roberson the Third?");
+    printWords("Blonde Blazer: The Third?! Three times this happened?");
+    printWords("Robert: Grandpa Bobby, then Dad (Robbie), then me. Cause I wanted to be taken seriously.");
+    printWords("Blonde Blazer: A family tradition.");
+    printWords("Robert: In more ways than one. Gramps was the first Mecha Man. He died in the suit before I was born.");
+    printWords("Dad was killed fighting Shroud. That's when I took over. There was a little inheritance and life insurance money.");
+
+    printWords("Blonde Blazer: I'm so sorry. I didn't realize.");
+    printWords("Robert: Just your run-of-the-mill sad superhero origin story.");
+    printWords("Blonde Blazer: The family tradition is dying in that suit. Which I guess I don't have to worry about anymore.");
+
+    printWords("Mecha Man: What is it?");
+    printWords("Blonde Blazer: I'm not quite drunk enough to share my origin story yet. But remind me to tell you someday.");
+    printWords("Robert: Definitely.");
+
+    printLines("*Blonde Blazer sits close to Robert*");
+    printLines("*She gently touches Robert’s face*  (〃ω〃)");
+    printLines("*Blonde Blazer removes his mask*  ( ﾉ ﾟｰﾟ)ﾉ");
+    printLines("*She looks intently into his eyes* (*≧︶≦))(￣▽￣* )ゞ");
+    printWords("Blonde Blazer: We can work with this.");
+
+    cout << "\n1. Kiss her\n2. Let the moment pass\nChoice: ";
+    choice = readChoice();
+
+    if (choice == 1) {
+        printLines("*You lean in and kiss her*  ( ˘ ³˘)♥");
+        printWords("Blonde Blazer: No. This... I'm sorry if I gave the wrong impression.");
+        relationshipScore += 2; // risky but bonding
+        publicChaos += 1; // small attention
+    } else if (choice == 2) {
+        printLines("*You hesitate and pull back*  (•_•)");
+        printWords("Blonde Blazer: Sorry. I'm actually here with a purpose.");
+        relationshipScore += 1; // safe bonding
+    } else {
+        printWords("Robert: Uh... yeah.");
+    }
+
+    printWords("Robert: Oh no.");
+    printWords("Blonde Blazer: It's my fault.");
+    printWords("Robert: I'm so sorry, I totally misread that--");
+    printWords("Blonde Blazer: You didn't. I mean, you did, but...");
+    printWords("The way I went about tonight... it was all a little loose, a little unprofessional...");
+    printWords("Robert: Unprofessional? I'm not sure that applies but... okay.");
+
+    printWords("Blonde Blazer: I'm actually here on official business... how I know your name, the proposition I mentioned right before you spit in my mouth--");
+    printWords("Robert: Still mortified about that.");
+    printWords("Blonde Blazer: It's fine. Do you remember a superhero named Trackstar?");
+    printWords("Robert: Remember? Of course. He's like family I haven't talked to in a while. What about him?");
+    printWords("Blonde Blazer: I work with him at SDN. He recommended you. Mentioned he worked with your father.");
+    printWords("Robert: Yeah, he was the youngest member of the Brave Brigade, kind of my babysitter for a while. How's he doing?");
+    printWords("Blonde Blazer: He's doing great. He's why I'm here.");
+
+    printWords("Blonde Blazer: Robert, I would like to make you an offer.");
+    printWords("In exchange for dispatching and mentoring some of our rookie heroes, SDN can make you Mecha Man again.");
+    printWords("But this time with all the resources that a company as big as ours has at their disposal.");
+    printWords("No more paying out of pocket for repairs, support staff, the whole shebang.");
+
+    printWords("Robert: My suit was totally destroyed...");
+    printWords("Blonde Blazer: I saw the report, studied the footage.");
+    printWords("It's not totally destroyed, just mostly.");
+    printWords("Big investment, it'll take considerable time and money to get the suit repaired and missing pieces replaced.");
+    printWords("Plenty of time to learn how to dispatch and level up some heroes on our roster.");
+    printWords("Your experience, work ethic, perspective—it's all invaluable. Share it, Robert. You have a lot left to give.");
+
+    cout << "\n===== End of Scene 4 =====\n";
+    cout << "Current Relationship Score: " << relationshipScore << "\n";
+    cout << "Current Public Chaos: " << publicChaos << "\n";
 }
 
-/* ---------- Standalone Main ---------- */
 int main() {
-    scene_bar_flambae();
+    int relationshipScore = 0;
+    int publicChaos = 0;
+
+    scene_billboard(relationshipScore, publicChaos);
+
     return 0;
 }
