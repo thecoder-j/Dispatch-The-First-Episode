@@ -107,7 +107,8 @@ void scene_bar_flambae() {
         typeWords("Flambae: I've been waiting a long time for this.");
         typeLine("*Flambae charges, slips, and knocks himself out*  (x_x)");
         typeLine("*Coupe and Punch-up runoff to get him*");
-        typeWords("Dobble: Hey, why don't you do us a favor and step out of this bar.");        typeWords("Mecha Man: I get it. Can you just tell Blazer I'm outside?");
+        typeWords("Dobble: Hey, why don't you do us a favor and step out of this bar.");        
+        typeWords("Mecha Man: I get it. Can you just tell Blazer I'm outside?");
         typeLine("*Dopple duplicates*");
         typeWords("Dopple: OUT!.");
         typeWords("Mecha Man: Relax! I'm leaving.");
