@@ -1,0 +1,131 @@
+#include <iostream>
+#include <thread>
+#include <chrono>
+#include <sstream>
+#include <limits>
+using namespace std;
+
+// GLOBAL VARIABLE
+bool isMerciful = false;
+
+// WORD-BY-WORD PRINTING
+void printWords(const string &text, int wordDelayMs = 150) {
+    stringstream ss(text);
+    string word;
+    while (ss >> word) {
+        cout << word << " " << flush;
+        this_thread::sleep_for(chrono::milliseconds(wordDelayMs));
+    }
+    cout << endl;
+}
+
+// LINE-BY-LINE PRINTING
+void printLines(const string &text, int lineDelayMs = 600) {
+    stringstream ss(text);
+    string line;
+    while (getline(ss, line, '\n')) {
+        cout << line << endl;
+        this_thread::sleep_for(chrono::milliseconds(lineDelayMs));
+    }
+}
+
+// WAIT FOR ENTER
+void waitForEnter(const string &prompt = "\n[Press Enter to continue...]") {
+    cout << prompt << flush;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+}
+
+// READ CHOICE WITH RANGE VALIDATION
+int readChoice(int min = 1, int max = 3) {
+    int choice;
+    while (true) {
+        if (cin >> choice && choice >= min && choice <= max) {
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            return choice;
+        }
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Invalid choice. Please enter " << min << "-" << max << ": ";
+    }
+}
+
+// =================================================
+// SCENE 6: COMBAT – TOXIC FACTORY
+// =================================================
+void scene_combat_toxic() {
+    int choice;
+
+    waitForEnter("\n[Press Enter to begin Scene 6: Combat - Toxic...]");
+
+    cout << "\n========== SCENE 6: COMBAT – TOXIC ==========\n\n";
+
+    printWords("Mecha Man: Hey, uh, can I get a copy of that video when we're done here?");
+
+    cout << "\n+---------------------------------------+\n";
+    cout << "|  CHOICES:                             |\n";
+    cout << "+---------------------------------------+\n";
+    cout << "|  1. It's over, Shroud                 |\n";
+    cout << "|  2. Prepare to die                    |\n";
+    cout << "|  3. I'm here to fuck you up           |\n";
+    cout << "+---------------------------------------+\n";
+    cout << "Choice: ";
+    choice = readChoice(1, 3);
+
+    if (isMerciful) {
+        printLines("\n");
+        printWords("Mecha Man: Cause it's over, Shroud.");
+        printWords("Mecha Man: And I'd like to watch this from a different angle.");
+    } else {
+        printLines("\n");
+        printWords("Soothing Goon: After you let me go, I swore I'd fuck you up.");
+    }
+
+    printLines("\n");
+    printWords("Soothing Goon: Funny thing about your dad.");
+    printWords("Soothing Goon: After Shroud shot him, he pissed himself.");
+    printWords("Soothing Goon: He knew he was fucked.");
+    printLines("\n");
+
+    printWords("Mecha Man: Can we skip to the part where you reveal your bullshit power?");
+    printLines("*Goon mutates*");
+    printWords("Toxic: Name's Toxic.");
+    printWords("Mecha Man: Yeah, that tracks.");
+    printLines("\n");
+
+    printWords("Toxic: Shields at twenty-eight percent.");
+    printWords("Toxic: Boss says he just wants the Astral Pulse.");
+
+    cout << "\n+---------------------------------------+\n";
+    cout << "|  CHOICES:                             |\n";
+    cout << "+---------------------------------------+\n";
+    cout << "|  1. Ignore him                        |\n";
+    cout << "|  2. You're bluffing                   |\n";
+    cout << "|  3. Bullshit                          |\n";
+    cout << "+---------------------------------------+\n";
+    cout << "Choice: ";
+    choice = readChoice(1, 3);
+
+    if (choice == 1) {
+        printLines("\n");
+        printWords("Toxic: You're not accounting for what's stuck to your leg, dumbass.");
+        printWords("Mecha Man: Fuck it.");
+        printLines("*Boosters ignite*");
+        printWords("Mecha Man escapes the factory.");
+    } else {
+        printLines("\n");
+        printWords("Toxic: Talking won't save you.");
+        printLines("*Combat intensifies*");
+    }
+
+    cout << "\n========================================\n";
+    cout << "         End of Scene 6\n";
+    cout << "========================================\n";
+}
+
+// MAIN FUNCTION
+int main() {
+    scene_combat_toxic();
+    cout << "\n[Press Enter to Exit]";
+    cin.get();
+    return 0;
+}
