@@ -5,7 +5,6 @@
 #include <limits>
 using namespace std;
 
-// ---------- HELPER FUNCTIONS ----------
 void printWords(const string &text, int wordDelayMs = 150) {
     stringstream ss(text);
     string word;
