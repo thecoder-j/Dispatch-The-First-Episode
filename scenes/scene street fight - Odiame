@@ -1,0 +1,115 @@
+#include <iostream>
+#include <thread>
+#include <chrono>
+#include <sstream>
+#include <limits>
+using namespace std;
+
+// ---------- HELPER FUNCTIONS ----------
+void printWords(const string &text, int wordDelayMs = 150) {
+    stringstream ss(text);
+    string word;
+    while (ss >> word) {
+        cout << word << " " << flush;
+        this_thread::sleep_for(chrono::milliseconds(wordDelayMs));
+    }
+    cout << endl;
+}
+
+void printLines(const string &text, int lineDelayMs = 600) {
+    stringstream ss(text);
+    string line;
+    while (getline(ss, line, '\n')) {
+        cout << line << endl;
+        this_thread::sleep_for(chrono::milliseconds(lineDelayMs));
+    }
+}
+
+void waitForEnter(const string &prompt = "\n[Press Enter to continue...]") {
+    cout << prompt << flush;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+}
+
+int readChoice(int min = 1, int max = 2) {
+    int choice;
+    while (true) {
+        if (cin >> choice && choice >= min && choice <= max) {
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            return choice;
+        }
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Invalid choice. Please enter " << min << "-" << max << ": ";
+    }
+}
+
+// =================================================
+// SCENE 2: TACTICAL CONSEQUENCE: STREET FIGHT
+// =================================================
+void scene_street_fight() {
+    int choice;
+    waitForEnter("\n[Press Enter to begin Scene: Street Fight...]");
+
+    cout << "\n========== SCENE: STREET FIGHT ==========\n\n";
+
+    // Dialogue
+    printWords("Mecha Man: Hey, assholes. Yeah, all you assholes. Pretty disrespectful for you to be doing that in front of me.");
+    printWords("Red Ski Mask: Hey, who are you calling assholes, asshole?");
+    printWords("Orange Ski Mask: I'll handle this idiot. Who the fuck are you? Yeah, you, go-fucking-hobo-ranger.");
+    printWords("Mecha Man: Right now, I’m someone with nothing to lose, which is probably bad news for you.");
+    printWords("Red Ski Mask: Well, with nothing you have, you’re about to lose again.");
+    printWords("Mecha Man: I’m enough to pack a fucking Skittles idiot like you.");
+    printWords("Mecha Man: Goddammit Look, you’re hurt, you’re not thinking straight. You don’t want to fight someone who knows which hand every punch is coming from.");
+    printWords("Red Ski Mask: (Swings)");
+    printWords("Mecha Man: Left.");
+    printWords("(Mecha Man dodges the first swing)");
+    printWords("Red Ski Mask: (Swings again)");
+    printWords("Mecha Man: Right.");
+    printWords("(Mecha Man dodges the second swing)");
+    printWords("Red Ski Mask: (Winds up for another)");
+    printWords("Mecha Man: Left.");
+    printWords("(Mecha Man counters and strikes Red Ski Mask, knocking him back)");
+    printWords("Mecha Man: Whatever the case, I’m going to have to deal with a pack of fucking Skittles idiots like you. God dammit.");
+    printWords("Orange Ski Mask: (Stepping forward) Hey! You want some too, old man?");
+    printWords("Mecha Man: (Sighs) Look, I’m trying to be nice here. Your friend already learned his lesson. You really want to be next?");
+    printWords("Orange Ski Mask: I'm gonna break your other arm, you piece of—");
+    printWords("Blazer: (Intervening)");
+    printWords("(Orange Ski Mask and Red Ski Mask retreat into the alley)");
+    printWords("Blazer: Hi, I’m Blazer. I work over at Superhero Dispatch Network. Hey,");
+    printWords("Mecha Man: I... yeah, I know who you are. You’re like, famous.");
+    printWords("Mecha Man: I don’t know about that. I’m just a corporate hero for hire. You’re the real deal. You’re the famous one.");
+    printWords("Blazer: I don't think \"infamous\" is the same as famous, but... oh god, your arm! Fuck!");
+    printWords("Mecha Man: Oh yeah, that’s gross.");
+    printWords("Blazer: Yeah, you look like some kind of mime DJ. Let me see it. I’ll help you. Usually, it dislocates the other way.");
+    printWords("Mecha Man: Okay, but have you done this before? 'Cause maybe—");
+    printWords("(Sound of a loud, wet bone snap)");
+    printWords("Mecha Man: Okay. Wow. That’s... that’s okay. Thank you.");
+
+    // Player tactical choice
+    cout << "\n+---------------------------------------+\n";
+    cout << "|  CHOICE: Tactical Move                |\n";
+    cout << "+---------------------------------------+\n";
+    cout << "|  1. Right Hand Punch                  |\n";
+    cout << "|     (Fails - Countered by Crowbar)   |\n";
+    cout << "|  2. Left Hand Punch                   |\n";
+    cout << "|     (Success - Knockout)              |\n";
+    cout << "+---------------------------------------+\n";
+    cout << "Choice: ";
+    choice = readChoice(1, 2);
+
+    if (choice == 1) {
+        printLines("\n*You throw a Right Hand Punch*");
+        printWords("Red Ski Mask counters and strikes you with the crowbar!");
+        printLines("*You stagger back, dazed and injured.*");
+        printWords("[GAME OVER - Tactical Failure]");
+    } else {
+        printLines("\n*You throw a Left Hand Punch*");
+        printWords("Direct hit! Red Ski Mask is knocked out cold!");
+        printWords("Orange Ski Mask sees the result and retreats.");
+        printWords("[SUCCESS - Tactical Efficiency Achieved]");
+    }
+
+    cout << "\n========================================\n";
+    cout << "         End of Street Fight Scene\n";
+    cout << "========================================\n";
+}
