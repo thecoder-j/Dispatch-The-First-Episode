@@ -529,6 +529,10 @@ This design choice makes the romance more nuanced than a simple "romance on/off"
 PS. This is not the complete list of references. Other members may not be able to add their sources as this was my choice to add. :))
 
 ---
+**Flowchart:**
+<img width="1446" height="3725" alt="image" src="https://github.com/user-attachments/assets/5b40bf9b-16b7-4ccd-a2f1-2dfc5a45fa9b" />
+**This flowchart shows the emotional arc of Robert Roberson's night, from a tense interrogation to a life-changing offer. It starts with vulnerability, forces a brutal moral choice, then builds through action, public spectacle, and private connection. Every decision—whether to be merciful, how to fight, what impression to make, and how to handle a moment of intimacy—shapes not just the outcome, but who Robert becomes by the end. The story is a pivot from lone hero to mentor, with the player’s compassion, boldness, and restraint writing the final chapter.**
+
 
 **Jamie Dominique J. Medina**    
 Writer, Coder
@@ -546,4 +550,4 @@ This project is created for educational purposes as part of a C++ programming co
 ---
 
 **DONEZOOO IT'S CHRISTMASTIME 🤑**
-<img width="10032" height="2009" alt="image" src="https://github.com/user-attachments/assets/1dcbb432-3843-4120-9551-1eaa1972e081" />
+
