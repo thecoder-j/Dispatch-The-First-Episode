@@ -15,7 +15,7 @@ void scene_billboard();
 void scene_combat_toxic();
 int impressionScore = 0;
 int publicChaos = 0;
-int isRomanticTensionActive = 0;
+bool isRomanticTensionActive = false;
 
 
 void printWords(const string &text, int wordDelayMs = 150) {
