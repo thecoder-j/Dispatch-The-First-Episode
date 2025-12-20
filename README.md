@@ -534,7 +534,7 @@ PS. This is not the complete list of references. Other members may not be able t
 
 **This flowchart shows the story path of an interactive game where you play as Robert Roberson, also known as Mecha Man. It follows six main scenes where your choices shape Robert's personality, his relationships, and the kind of hero he becomes. Each decision you make changes how characters see him and what happens in the end, leading to a final summary that reflects the unique journey you created.**
 
-
+---
 **Jamie Dominique J. Medina**    
 Writer, Coder
 
