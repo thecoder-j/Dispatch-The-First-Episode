@@ -1,0 +1,144 @@
+#include <iostream>
+#include <thread>
+#include <chrono>
+#include <sstream>
+#include <limits>
+using namespace std;
+
+// GLOBAL VARIABLES
+bool isMerciful = false;
+int Robert_Mercy_Rating = 0;
+
+// WORD-BY-WORD PRINTING
+void printWords(const string &text, int wordDelayMs = 150) {
+    stringstream ss(text);
+    string word;
+    while (ss >> word) {
+        cout << word << " " << flush;
+        this_thread::sleep_for(chrono::milliseconds(wordDelayMs));
+    }
+    cout << endl;
+}
+
+// LINE-BY-LINE PRINTING
+void printLines(const string &text, int lineDelayMs = 600) {
+    stringstream ss(text);
+    string line;
+    while (getline(ss, line, '\n')) {
+        cout << line << endl;
+        this_thread::sleep_for(chrono::milliseconds(lineDelayMs));
+    }
+}
+
+// WAIT FOR ENTER
+void waitForEnter(const string &prompt = "\n[Press Enter to continue...]") {
+    cout << prompt << flush;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+}
+
+// READ CHOICE WITH RANGE VALIDATION
+int readChoice(int min = 1, int max = 2) {
+    int choice;
+    while (true) {
+        if (cin >> choice && choice >= min && choice <= max) {
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            return choice;
+        }
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Invalid choice. Please enter " << min << "-" << max << ": ";
+    }
+}
+
+// =================================================
+// SCENE 2: APARTMENT INTERROGATION
+// =================================================
+void scene_apartment_interrogation() {
+    int choice;
+
+    waitForEnter("\n[Press Enter to begin Scene 2: Apartment Interrogation...]");
+
+    cout << "\n========== SCENE 2: APARTMENT INTERROGATION ==========\n\n";
+
+    printWords("Robert: Yeah. Thanks for reminding me.");
+    printWords("Robert: So here's what's going to happen.");
+    printLines("\n");
+
+    printWords("Robert: I'm going to hang you off the side of this building.");
+    printWords("Robert: You're going to tell me where Shroud is.");
+    printWords("Robert: Or I'm going to drop you.");
+    printLines("\n");
+
+    printWords("Soothing Goon: Come on. I thought we were having a breakthrough.");
+    printWords("Robert: For being a real piece of shit, you're pretty easy to talk to.");
+    printWords("Robert: But I only need one thing. Shroud's location.");
+    printLines("\n");
+
+    printWords("Soothing Goon: I'm not telling you SHIT!");
+    printWords("Robert: See? This is more like what I expected.");
+    printLines("\n");
+
+    printLines("*Chair scrapes across the floor*");
+    printWords("Soothing Goon: I hope Shroud kills you like he killed your father!");
+    printLines("\n");
+
+    printLines("*Wind howls*");
+    printWords("Robert: Windy up here tonight.");
+    printWords("Soothing Goon: Why are we outside?");
+    printWords("Robert: No telling where you land.");
+    printLines("\n");
+
+    printWords("Soothing Goon: WAIT! WAIT! STEEL MILL!");
+    printWords("Soothing Goon: Llewelyn Steel Works!");
+
+    this_thread::sleep_for(chrono::milliseconds(1000));
+
+    // CRITICAL MORAL CHOICE
+    cout << "\n+=======================================+\n";
+    cout << "|  THE MORAL CROSSROADS                 |\n";
+    cout << "+=======================================+\n";
+    cout << "|  1. LET HIM DROP                      |\n";
+    cout << "|     (Ruthless Efficiency)             |\n";
+    cout << "|                                       |\n";
+    cout << "|  2. PULL HIM BACK                     |\n";
+    cout << "|     (Compassion, Restraint)           |\n";
+    cout << "+=======================================+\n";
+    cout << "Choice: ";
+    choice = readChoice(1, 2);
+
+    // UPDATE GLOBAL VARIABLES BASED ON CHOICE
+    if (choice == 2) {
+        // PULL HIM BACK - Mercy path
+        isMerciful = true;
+        Robert_Mercy_Rating += 10;
+
+        printLines("\n*You pull him back onto the roof*");
+        printWords("Robert: Honestly, it was nice talking to someone about this stuff.");
+        printWords("Robert: I'm really glad I kidnapped you tonight.");
+
+        cout << "\n[✓ MERCY PATH CHOSEN - isMerciful = TRUE]\n";
+        cout << "[Robert shows compassion even to enemies]\n";
+
+    } else {
+        // LET HIM DROP - Ruthless path
+        isMerciful = false;
+        Robert_Mercy_Rating -= 5;
+
+        printLines("\n*Silence follows as the screaming fades*");
+
+        cout << "\n[✗ RUTHLESS PATH CHOSEN - isMerciful = FALSE]\n";
+        cout << "[Robert prioritizes efficiency over mercy]\n";
+    }
+
+    cout << "\n========================================\n";
+    cout << "         End of Scene 2\n";
+    cout << "========================================\n";
+}
+
+// MAIN FUNCTION
+int main() {
+    scene_apartment_interrogation();
+    cout << "\n[Press Enter to Exit]";
+    cin.get();
+    return 0;
+}
