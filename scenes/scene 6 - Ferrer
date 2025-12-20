@@ -5,10 +5,8 @@
 #include <limits>
 using namespace std;
 
-// GLOBAL VARIABLE
 bool isMerciful = false;
 
-// WORD-BY-WORD PRINTING
 void printWords(const string &text, int wordDelayMs = 150) {
     stringstream ss(text);
     string word;
@@ -19,7 +17,6 @@ void printWords(const string &text, int wordDelayMs = 150) {
     cout << endl;
 }
 
-// LINE-BY-LINE PRINTING
 void printLines(const string &text, int lineDelayMs = 600) {
     stringstream ss(text);
     string line;
@@ -29,13 +26,11 @@ void printLines(const string &text, int lineDelayMs = 600) {
     }
 }
 
-// WAIT FOR ENTER
 void waitForEnter(const string &prompt = "\n[Press Enter to continue...]") {
     cout << prompt << flush;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 
-// READ CHOICE WITH RANGE VALIDATION
 int readChoice(int min = 1, int max = 3) {
     int choice;
     while (true) {
