@@ -546,3 +546,4 @@ This project is created for educational purposes as part of a C++ programming co
 ---
 
 **DONEZOOO IT'S CHRISTMASTIME 🤑**
+<img width="10032" height="2009" alt="image" src="https://github.com/user-attachments/assets/1dcbb432-3843-4120-9551-1eaa1972e081" />
