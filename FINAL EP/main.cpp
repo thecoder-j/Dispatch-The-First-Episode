@@ -860,6 +860,104 @@ void scene_combat_toxic() {
     cout << "========================================\n";
 }
 
+// =====================================================
+// PHASE 3: EPILOGUE SUMMARY
+// =====================================================
+void epilogue_summary() {
+    cout << "\n\n";
+    cout << "===============================================\n";
+    cout << "              EPILOGUE: THE PIVOT\n";
+    cout << "===============================================\n\n";
+
+    cout << "Robert Roberson III stands at a crossroads.\n";
+    cout << "The suit is destroyed. His father's legacy weighs heavy.\n";
+    cout << "But a new path opens before him...\n\n";
+
+    // MORAL PATH SUMMARY
+    cout << "--- MORAL CHARACTER ---\n";
+    if (isMerciful) {
+        cout << "PATH: Compassionate Leadership\n";
+        cout << "Robert chose mercy when he could have chosen vengeance.\n";
+        cout << "This compassion will define his mentorship style.\n";
+        cout << "Future heroes will learn that strength includes restraint.\n\n";
+    } else {
+        cout << "PATH: Pragmatic Efficiency\n";
+        cout << "Robert chose results over compassion.\n";
+        cout << "His mentorship will emphasize tactical excellence.\n";
+        cout << "Future heroes will learn that winning requires sacrifice.\n\n";
+    }
+
+    // BLAZER RELATIONSHIP SUMMARY
+    cout << "--- RELATIONSHIP WITH BLONDE BLAZER ---\n";
+    cout << "Impression Score: " << impressionScore << "/15\n\n";
+    
+    if (impressionScore >= 10) {
+        cout << "STATUS: EXCEPTIONAL IMPRESSION\n";
+        cout << "Blonde Blazer sees Robert as unforgettable.\n";
+        cout << "His bold choices and authenticity captured her attention.\n";
+        cout << "She remembers the chaos at the bar with a smile.\n";
+    } else if (impressionScore >= 6) {
+        cout << "STATUS: STRONG IMPRESSION\n";
+        cout << "Blonde Blazer respects Robert's approach.\n";
+        cout << "She sees potential in his unconventional methods.\n";
+    } else {
+        cout << "STATUS: MODEST IMPRESSION\n";
+        cout << "Blonde Blazer sees Robert as competent but unremarkable.\n";
+        cout << "He got the job done, but didn't stand out.\n";
+    }
+    cout << "\n";
+
+    // ROMANCE STATUS
+    if (isRomanticTensionActive) {
+        cout << "ROMANTIC TENSION: ACTIVE\n";
+        cout << "There's undeniable chemistry between Robert and Blazer.\n";
+        cout << "Their relationship will be complicated by their professional roles.\n";
+        cout << "The billboard moment changed everything.\n\n";
+    } else {
+        cout << "ROMANTIC TENSION: NONE\n";
+        cout << "Their relationship remains strictly professional.\n\n";
+    }
+
+    // OVERALL MERCY RATING
+    cout << "--- OVERALL MERCY RATING ---\n";
+    cout << "Score: " << Robert_Mercy_Rating << "\n\n";
+    
+    if (Robert_Mercy_Rating >= 10) {
+        cout << "Robert's compassion defines him.\n";
+        cout << "He believes in redemption and second chances.\n";
+        cout << "His mentorship will emphasize heroism as service.\n";
+    } else if (Robert_Mercy_Rating >= 0) {
+        cout << "Robert balances mercy with pragmatism.\n";
+        cout << "He knows when to be compassionate and when to be firm.\n";
+        cout << "His mentorship will teach situational ethics.\n";
+    } else {
+        cout << "Robert's methods are ruthlessly efficient.\n";
+        cout << "He believes results matter more than methods.\n";
+        cout << "His mentorship will create effective, hardened heroes.\n";
+    }
+
+    cout << "\n--- THE TRANSFORMATION ---\n";
+    cout << "Robert accepts Blonde Blazer's offer.\n";
+    cout << "He transitions from active hero to dispatcher.\n";
+    cout << "His experience, both victories and failures,\n";
+    cout << "will shape the next generation of heroes.\n\n";
+
+    cout << "The suit may be gone, but Robert's mission continues.\n";
+    cout << "This is not an ending. This is THE PIVOT.\n\n";
+
+    cout << "===============================================\n";
+    cout << "            THANK YOU FOR PLAYING\n";
+    cout << "===============================================\n\n";
+
+    // FINAL STATISTICS
+    cout << "\n--- FINAL STATISTICS ---\n";
+    cout << "Merciful Path: " << (isMerciful ? "YES" : "NO") << "\n";
+    cout << "Blazer Impression: " << impressionScore << "/15\n";
+    cout << "Romance Active: " << (isRomanticTensionActive ? "YES" : "NO") << "\n";
+    cout << "Mercy Rating: " << Robert_Mercy_Rating << "\n";
+    cout << "\n===============================================\n\n";
+}
+
 /* ---------- Standalone Main ---------- */
 int main() {
     cout << "\n";
@@ -882,5 +980,4 @@ int main() {
     cin.get();
     return 0;
 }
-
 
