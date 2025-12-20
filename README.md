@@ -530,8 +530,8 @@ PS. This is not the complete list of references. Other members may not be able t
 
 ---
 **Flowchart:**
-<img width="1446" height="3725" alt="image" src="https://github.com/user-attachments/assets/5b40bf9b-16b7-4ccd-a2f1-2dfc5a45fa9b" />
-**This flowchart shows the emotional arc of Robert Roberson's night, from a tense interrogation to a life-changing offer. It starts with vulnerability, forces a brutal moral choice, then builds through action, public spectacle, and private connection. Every decision—whether to be merciful, how to fight, what impression to make, and how to handle a moment of intimacy—shapes not just the outcome, but who Robert becomes by the end. The story is a pivot from lone hero to mentor, with the player’s compassion, boldness, and restraint writing the final chapter.**
+
+**This flowchart shows the story path of an interactive game where you play as Robert Roberson, also known as Mecha Man. It follows six main scenes where your choices shape Robert's personality, his relationships, and the kind of hero he becomes. Each decision you make changes how characters see him and what happens in the end, leading to a final summary that reflects the unique journey you created.**
 
 
 **Jamie Dominique J. Medina**    
