@@ -1,0 +1,92 @@
+#include <iostream>
+#include <thread>
+#include <chrono>
+#include <sstream>
+#include <limits>
+using namespace std;
+
+void printWords(const string &text, int wordDelayMs = 150) {
+    stringstream ss(text);
+    string word;
+    while (ss >> word) {
+        cout << word << " " << flush;
+        this_thread::sleep_for(chrono::milliseconds(wordDelayMs));
+    }
+    cout << endl;
+}
+
+void printLines(const string &text, int lineDelayMs = 600) {
+    stringstream ss(text);
+    string line;
+    while (getline(ss, line, '\n')) {
+        cout << line << endl;
+        this_thread::sleep_for(chrono::milliseconds(lineDelayMs));
+    }
+}
+
+void waitForEnter(const string &prompt = "\n[Press Enter to continue...]") {
+    cout << prompt << flush;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+}
+
+int readChoice(int min = 1, int max = 3) {
+    int choice;
+    while (true) {
+        if (cin >> choice && choice >= min && choice <= max) {
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            return choice;
+        }
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Invalid choice. Please enter " << min << "-" << max << ": ";
+    }
+}
+
+void scene_intro() {
+    int choice;
+    waitForEnter("\n[Press Enter to begin Scene 1: Introduction...]");
+
+    cout << "\n========== SCENE 1: INTRODUCTION ==========\n\n";
+
+    printWords("Robert: Obviously.");
+    printWords("Robert: I love him, he's my dad.");
+    printWords("Goon: Hmm...");
+    printWords("Robert: What does that \"Hmm\" mean? Just say what you want to say.");
+    printWords("Goon: It's just when you add 'obviously' it feels a little less obvious.");
+    printWords("Goon: So I'll ask again: how do you really feel about your father?");
+
+    cout << "\n+---------------------------------------+\n";
+    cout << "|  CHOICES:                             |\n";
+    cout << "+---------------------------------------+\n";
+    cout << "|  1. Didn't know him well              |\n";
+    cout << "|  2. I love my dad                     |\n";
+    cout << "|  3. He's gone                         |\n";
+    cout << "+---------------------------------------+\n";
+    cout << "Choice: ";
+    choice = readChoice(1, 3);
+
+    if (choice == 2) {
+        printWords("Robert: Look, I love my dad, all right? I love my dad. That's the truth.");
+        printWords("Goon: Loved.");
+        printWords("Robert: That's what I said.");
+        printWords("Goon: You said 'love.' Your dad's dead.");
+        printWords("Robert: Just so sensitive.");
+    } else if (choice == 1) {
+        printWords("Robert: I didn't really know him that well.");
+        printWords("Goon: That kind of loss sticks around anyway.");
+    } else {
+        printWords("Robert: He's gone.");
+        printWords("Goon: And you're still standing here because of it.");
+    }
+
+    cout << "\n========================================\n";
+    cout << "         End of Scene 1\n";
+    cout << "========================================\n";
+}
+
+int main() {
+    scene_intro();
+    cout << "\n[Press Enter to Exit]";
+    cin.get();
+    return 0;
+}
